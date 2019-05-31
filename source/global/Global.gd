@@ -1,4 +1,4 @@
 extends Node
 
-var Navigation = null
-var Terrain = null
+var Navigation: Navigation2D = null
+var Terrain: TileMap = null
