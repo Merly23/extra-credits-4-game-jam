@@ -3,9 +3,16 @@ extends KinematicBody2D
 var motion := Vector2()
 
 export var speed := 200
+export var damage := 1
+
+onready var stick_area := $StickArea
 
 onready var anim := $AnimationPlayer
 onready var sprite := $Sprite
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_right_button"):
+		_attack()
 
 func _process(delta: float) -> void:
 
@@ -30,4 +37,11 @@ func _process(delta: float) -> void:
 	else:
 		motion.y = 0
 		anim.play("idle")
+
 	move_and_collide(motion)
+
+func _attack() -> void:
+	var areas = stick_area.get_overlapping_areas()
+	for area in areas:
+		if area is Attackable:
+			area.harm(damage)
