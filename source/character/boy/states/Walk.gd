@@ -1,6 +1,6 @@
 extends State
 
-var motion := Vector2(0, 0)
+var direction := Vector2(0, 0)
 
 var up = false
 var down = false
@@ -12,36 +12,33 @@ export var speed := 120
 func enter(host):
 	host.anim.travel("walk")
 
-func update(host, delta: float):
+func input(host, event: InputEvent):
+	if event.is_action_pressed("mouse_left_button"):
+		host.state_machine.change_state("attack")
+
+func update(host, delta: float) -> void:
+	_movement(host, delta)
+	_animation(host)
+
+func _movement(host, delta: float) -> void:
 	up = Input.is_action_pressed("ui_up")
 	down = Input.is_action_pressed("ui_down")
 	left = Input.is_action_pressed("ui_left")
 	right = Input.is_action_pressed("ui_right")
 
-	if up and not down:
-		host.set_frame_offset(host.FACING.UP, host.ANIMATION.WALK)
-		motion.y = -1
-	elif down and not up:
-		host.set_frame_offset(host.FACING.DOWN, host.ANIMATION.WALK)
-		motion.y = 1
-	else:
-		motion.y = 0
+	direction.x = -int(left) + int(right)
+	direction.y = -int(up) + int(down)
 
-	if left and not right:
-		motion.x = -1
-		host.set_frame_offset(host.FACING.LEFT, host.ANIMATION.WALK)
-	elif right and not left:
-		motion.x = 1
-		host.set_frame_offset(host.FACING.RIGHT, host.ANIMATION.WALK)
-	else:
-		motion.x = 0
-
-	if motion.length() == 0:
+	if direction == Vector2.ZERO:
 		host.state_machine.change_state("idle")
 	else:
-		motion = motion.normalized() * speed * delta
-		host.move_and_collide(motion)
+		host.move_and_collide(direction.normalized() * speed * delta)
 
-func input(host, event: InputEvent):
-	if event.is_action_pressed("mouse_left_button"):
-		host.state_machine.change_state("attack")
+func _animation(host):
+	match direction:
+		Vector2.UP: host.set_frame_offset(host.FACING.UP, host.ANIMATION.WALK)
+		Vector2.DOWN: host.set_frame_offset(host.FACING.DOWN, host.ANIMATION.WALK)
+		Vector2.LEFT: host.set_frame_offset(host.FACING.LEFT, host.ANIMATION.WALK)
+		Vector2.RIGHT: host.set_frame_offset(host.FACING.RIGHT, host.ANIMATION.WALK)
+	pass
+

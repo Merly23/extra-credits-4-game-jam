@@ -1,6 +1,6 @@
 extends Character
 
-enum ANIMATION {IDLE, WALK, ATTACK }
+enum ANIMATION { IDLE, WALK, ATTACK }
 
 var motion := Vector2(0, 0)
 
@@ -11,7 +11,6 @@ export var damage := 6
 onready var stick_area := $StickArea
 
 func _ready() -> void:
-	Global.Boy = self
 	anim_tree.active = true
 	state_machine.register_state("idle", "Idle")
 	state_machine.register_state("walk", "Walk")

@@ -14,6 +14,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		tween.stop_all()
 		_move()
 
+func _ready() -> void:
+	Global.Girl = self
+
 func _process(delta: float) -> void:
 	update()
 

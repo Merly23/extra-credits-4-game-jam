@@ -19,8 +19,6 @@ func harm(damage: int) -> void:
 	tween.interpolate_property(health_bar, "value", health_bar.value, health, 0.2, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
-
-
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
 		queue_free()

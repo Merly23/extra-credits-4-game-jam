@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://graphics/tilesets/terrain.tres" type="TileSet" id=2]
-[ext_resource path="res://source/character/boy/Boy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/game/GameCam.gd" type="Script" id=3]
 [ext_resource path="res://source/character/girl/Ghost.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/attackable/Attackable.tscn" type="PackedScene" id=5]
-[ext_resource path="res://source/game/GameCam.gd" type="Script" id=6]
+[ext_resource path="res://source/character/boy/Boy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/attackable/Attackable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/character/doll/Doll.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,20 +25,41 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 65565, 35, 0, 131096, 28, 0, 131101, 36, 0, 327721, 27, 0, 393237, 40, 0, 393238, 41, 0, 393239, 40, 0, 393240, 41, 0, 458773, 39, 0, 458774, 37, 0, 458776, 38, 0, 524309, 40, 0, 524312, 41, 0, 589837, 32, 0, 589845, 39, 0, 589846, 37, 0, 589848, 38, 0, 655381, 40, 0, 655384, 41, 0, 720909, 35, 0, 720917, 39, 0, 720918, 38, 0, 720919, 39, 0, 720920, 38, 0, 786439, 32, 0, 786445, 36, 0, 786450, 27, 0, 917522, 27, 0, 917529, 35, 0, 983056, 32, 0, 983064, 32, 0, 983065, 36, 0, 1245183, 40, 0, 1179648, 41, 0, 1179649, 40, 0, 1179650, 41, 0, 1179651, 40, 0, 1179652, 41, 0, 1179653, 40, 0, 1179654, 41, 0, 1179655, 40, 0, 1179656, 41, 0, 1179657, 40, 0, 1179658, 41, 0, 1179659, 40, 0, 1179660, 41, 0, 1179661, 40, 0, 1179662, 41, 0, 1179663, 40, 0, 1179664, 41, 0, 1179665, 40, 0, 1179666, 41, 0, 1179671, 40, 0, 1179672, 41, 0, 1179673, 40, 0, 1179674, 41, 0, 1179675, 40, 0, 1179676, 41, 0, 1179677, 40, 0, 1179678, 41, 0, 1179679, 40, 0, 1179680, 41, 0, 1179681, 40, 0, 1179682, 41, 0, 1310719, 39, 0, 1245184, 37, 0, 1245186, 37, 0, 1245188, 37, 0, 1245190, 37, 0, 1245192, 37, 0, 1245194, 37, 0, 1245196, 37, 0, 1245198, 37, 0, 1245200, 37, 0, 1245202, 38, 0, 1245207, 39, 0, 1245208, 37, 0, 1245210, 37, 0, 1245212, 37, 0, 1245214, 37, 0, 1245216, 37, 0, 1245218, 38, 0, 1376255, 40, 0, 1310738, 41, 0, 1310743, 40, 0, 1310754, 41, 0, 1441791, 39, 0, 1376256, 38, 0, 1376257, 39, 0, 1376258, 38, 0, 1376259, 39, 0, 1376260, 38, 0, 1376261, 39, 0, 1376262, 38, 0, 1376263, 39, 0, 1376264, 38, 0, 1376265, 39, 0, 1376266, 38, 0, 1376267, 39, 0, 1376268, 38, 0, 1376269, 39, 0, 1376270, 38, 0, 1376271, 39, 0, 1376272, 38, 0, 1376273, 39, 0, 1376274, 38, 0, 1376279, 39, 0, 1376280, 38, 0, 1376281, 39, 0, 1376282, 38, 0, 1376283, 39, 0, 1376284, 38, 0, 1376285, 39, 0, 1376286, 38, 0, 1376287, 39, 0, 1376288, 38, 0, 1376289, 39, 0, 1376290, 38, 0 )
 
-[node name="Boy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 159.835, 103.777 )
-
-[node name="Ghost" parent="." instance=ExtResource( 4 )]
-position = Vector2( 91.2684, 82.9291 )
-
-[node name="Attackable" parent="." instance=ExtResource( 5 )]
-position = Vector2( 237.137, 63.5544 )
-health_max = 20
-
 [node name="GameCam" type="Camera2D" parent="."]
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
-script = ExtResource( 6 )
+script = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="GameCam"]
+
+[node name="Characters" type="YSort" parent="."]
+
+[node name="Player" type="YSort" parent="Characters"]
+
+[node name="Ghost" parent="Characters/Player" instance=ExtResource( 4 )]
+position = Vector2( 91.2684, 82.9291 )
+
+[node name="Boy" parent="Characters/Player" instance=ExtResource( 5 )]
+
+[node name="Enemies" type="YSort" parent="Characters"]
+
+[node name="Attackable" parent="Characters/Enemies" instance=ExtResource( 6 )]
+position = Vector2( 237.137, 63.5544 )
+health_max = 20
+
+[node name="Doll" parent="Characters/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 111.489, 32.6222 )
+frame_size = Vector2( 48, 48 )
+
+[node name="Doll2" parent="Characters/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 207.205, 200.752 )
+frame_size = Vector2( 48, 48 )
+
+[node name="Doll3" parent="Characters/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 494.449, 60.8273 )
+frame_size = Vector2( 48, 48 )
+
+[node name="Doll4" parent="Characters/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 512.082, 259.907 )
+frame_size = Vector2( 48, 48 )
