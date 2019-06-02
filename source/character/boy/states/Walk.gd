@@ -20,26 +20,27 @@ func update(host, delta: float):
 
 	if up and not down:
 		host.set_frame_offset(host.FACING.UP, host.ANIMATION.WALK)
-		motion.y = -speed * delta
+		motion.y = -1
 	elif down and not up:
 		host.set_frame_offset(host.FACING.DOWN, host.ANIMATION.WALK)
-		motion.y = speed * delta
+		motion.y = 1
 	else:
 		motion.y = 0
 
 	if left and not right:
-		motion.x = -speed * delta
+		motion.x = -1
 		host.set_frame_offset(host.FACING.LEFT, host.ANIMATION.WALK)
 	elif right and not left:
-		motion.x = speed * delta
+		motion.x = 1
 		host.set_frame_offset(host.FACING.RIGHT, host.ANIMATION.WALK)
 	else:
 		motion.x = 0
 
 	if motion.length() == 0:
 		host.state_machine.change_state("idle")
-
-	host.move_and_collide(motion)
+	else:
+		motion = motion.normalized() * speed * delta
+		host.move_and_collide(motion)
 
 func input(host, event: InputEvent):
 	if event.is_action_pressed("mouse_left_button"):
