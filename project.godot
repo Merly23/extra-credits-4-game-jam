@@ -52,6 +52,7 @@ config/icon="res://icon.png"
 
 Scene="*res://source/global/Scene.tscn"
 Global="*res://source/global/Global.gd"
+Audio="*res://source/global/Audio.tscn"
 
 [display]
 

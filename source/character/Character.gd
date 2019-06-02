@@ -10,6 +10,9 @@ export var frame_size := Vector2(16, 16)
 onready var anim_player := $AnimationPlayer as AnimationPlayer
 onready var anim_tree := $AnimationTree as AnimationTree
 onready var anim = anim_tree.get("parameters/playback")
+
+onready var audio_player := $AudioStreamPlayer
+
 onready var sprite := $Sprite as Sprite
 
 onready var state_machine = $StateMachine as StateMachine

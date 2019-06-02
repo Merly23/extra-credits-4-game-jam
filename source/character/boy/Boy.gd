@@ -38,3 +38,9 @@ func slash():
 		if area is Attackable:
 			area.harm(damage)
 		break;
+
+func play_slash():
+	Audio.play_boy_slash()
+
+func play_step():
+	Audio.play_boy_foodstep()
