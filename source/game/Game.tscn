@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://graphics/tilesets/terrain.tres" type="TileSet" id=2]
 [ext_resource path="res://source/character/boy/Boy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/character/girl/Ghost.tscn" type="PackedScene" id=4]
 [ext_resource path="res://source/attackable/Attackable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/game/GameCam.gd" type="Script" id=6]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -32,3 +33,11 @@ position = Vector2( 91.2684, 82.9291 )
 [node name="Attackable" parent="." instance=ExtResource( 5 )]
 position = Vector2( 237.137, 63.5544 )
 health_max = 20
+
+[node name="GameCam" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+script = ExtResource( 6 )
+
+[node name="Tween" type="Tween" parent="GameCam"]
