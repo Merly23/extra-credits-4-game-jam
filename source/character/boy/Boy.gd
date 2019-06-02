@@ -11,10 +11,6 @@ export var damage := 6
 
 onready var stick_area := $StickArea
 
-#func _unhandled_input(event: InputEvent) -> void:
-#	if event.is_action_pressed("mouse_right_button"):
-#		_attack()
-
 func _ready() -> void:
 	state_machine.register_state("idle", "Idle")
 	state_machine.register_state("walk", "Walk")
@@ -26,18 +22,19 @@ func set_frame_offset(facing, animation):
 	self.animation = animation
 	var frame_offset = frame_size.y * (animation * 4 + facing)
 
-	# print("FACING: ", facing, " ANIM: ", animation, " OFFSET: ", frame_offset)
-
 	if sprite:
 		sprite.region_rect = Rect2(Vector2(0, frame_offset), sprite.region_rect.size)
 
-#	var areas = stick_area.get_overlapping_areas()
-#
-#	for area in areas:
-#		if area is Attackable:
-#			area.harm(damage)
+	match facing:
+		FACING.UP: stick_area.position = Vector2(0, -9)
+		FACING.DOWN: stick_area.position = Vector2(0, 19)
+		FACING.LEFT: stick_area.position = Vector2(-14, 5)
+		FACING.RIGHT: stick_area.position = Vector2(14, 5)
 
+func slash():
+	var areas = stick_area.get_overlapping_areas()
 
-#func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-#	if anim_name.begins_with("attack"):
-#		anim.play("idle")
+	for area in areas:
+		if area is Attackable:
+			area.harm(damage)
+		break;

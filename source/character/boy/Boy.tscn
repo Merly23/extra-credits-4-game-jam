@@ -8,9 +8,9 @@
 [ext_resource path="res://source/character/boy/states/Attack.gd" type="Script" id=6]
 [ext_resource path="res://source/character/boy/StickArea.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 resource_name = "attack"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -18,14 +18,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "slash"
+} ]
+}
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=2]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -41,7 +54,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "walk"
 length = 0.6
 loop = true
@@ -58,7 +71,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "attack"
 
 [sub_resource type="AnimationNodeAnimation" id=5]
@@ -71,38 +84,38 @@ animation = "walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-
-[sub_resource type="AnimationNodeStateMachine" id=2]
-states/attack/node = SubResource( 10 )
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/attack/node = SubResource( 4 )
 states/attack/position = Vector2( 268, 168 )
 states/idle/node = SubResource( 5 )
 states/idle/position = Vector2( 225, 41 )
 states/walk/node = SubResource( 6 )
 states/walk/position = Vector2( 389, 71 )
-transitions = [ "idle", "walk", SubResource( 7 ), "walk", "idle", SubResource( 8 ), "idle", "attack", SubResource( 11 ), "attack", "idle", SubResource( 12 ), "walk", "attack", SubResource( 13 ) ]
+transitions = [ "idle", "walk", SubResource( 7 ), "walk", "idle", SubResource( 8 ), "idle", "attack", SubResource( 9 ), "attack", "idle", SubResource( 10 ), "walk", "attack", SubResource( 11 ) ]
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
-[node name="Boy" index="0" instance=ExtResource( 1 )]
+[node name="Boy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 frame_size = Vector2( 48, 48 )
 
 [node name="AnimationPlayer" parent="." index="0"]
-anims/attack = SubResource( 9 )
-anims/idle = SubResource( 1 )
-anims/walk = SubResource( 4 )
+anims/attack = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 3 )
 
 [node name="AnimationTree" parent="." index="1"]
-tree_root = SubResource( 2 )
+tree_root = SubResource( 12 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 3 )
+parameters/playback = SubResource( 13 )
 
 [node name="Sprite" parent="." index="3"]
 texture = ExtResource( 3 )

@@ -12,9 +12,6 @@ export var speed := 120
 func enter(host):
 	host.anim.travel("walk")
 
-func exit(host):
-	.exit(host)
-
 func update(host, delta: float):
 	up = Input.is_action_pressed("ui_up")
 	down = Input.is_action_pressed("ui_down")
