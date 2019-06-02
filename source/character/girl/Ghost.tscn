@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://source/characters/Boy.gd" type="Script" id=1]
-[ext_resource path="res://graphics/images/characters/boy_front.png" type="Texture" id=2]
-[ext_resource path="res://graphics/images/characters/boy_side.png" type="Texture" id=3]
-[ext_resource path="res://graphics/images/characters/boy_back.png" type="Texture" id=4]
-[ext_resource path="res://graphics/images/characters/character.png" type="Texture" id=5]
+[ext_resource path="res://source/character/girl/Girl.gd" type="Script" id=1]
+[ext_resource path="res://graphics/images/characters/girl_front.png" type="Texture" id=2]
+[ext_resource path="res://graphics/images/characters/girl_side.png" type="Texture" id=3]
+[ext_resource path="res://graphics/images/characters/girl_back.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -20,6 +19,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -73,12 +84,8 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 7, 8 )
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 7, 7 )
-
-[node name="Boy" type="KinematicBody2D"]
+[node name="Ghost" type="KinematicBody2D"]
 script = ExtResource( 1 )
-speed = 120
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -87,24 +94,14 @@ anims/walk_down = SubResource( 2 )
 anims/walk_right = SubResource( 3 )
 anims/walk_up = SubResource( 4 )
 
+[node name="Tween" type="Tween" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
 shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 5 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-rotating = true
-current = true
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-smoothing_enabled = true
-smoothing_speed = 8.0
-
-[node name="StickArea" type="Area2D" parent="."]
-position = Vector2( 14, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StickArea"]
-position = Vector2( 0, 3 )
-shape = SubResource( 6 )
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 0, -1.06019 )
+texture = ExtResource( 2 )
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

@@ -14,14 +14,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/attackable/Attackable.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://source/character/Character.gd"
+}, {
 "base": "Node",
 "class": "SceneLoader",
 "language": "GDScript",
 "path": "res://source/tools/SceneLoader.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://source/character/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://source/character/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "Attackable": "",
-"SceneLoader": ""
+"Character": "",
+"SceneLoader": "",
+"State": "",
+"StateMachine": ""
 }
 
 [application]
