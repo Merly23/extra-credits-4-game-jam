@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Camera2D",
 "class": "GameCam",
 "language": "GDScript",
-"path": "res://source/game/GameCam.gd"
+"path": "res://source/levels/GameCam.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Girl",

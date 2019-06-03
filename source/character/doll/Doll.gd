@@ -65,4 +65,5 @@ func play_step():
 	pass # Audio.play_boy_foodstep()
 
 func _set_target(value):
-	_target = get_node(target)
+	if value:
+		_target = get_node(target)
