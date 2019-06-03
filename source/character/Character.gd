@@ -30,6 +30,16 @@ func _ready() -> void:
 	health_bar.max_value = health_max
 	health_bar.value = health
 
+func get_direction(a: Vector2, b: Vector2) -> Vector2:
+	var dir = (b - a).normalized()
+	if dir.x < -0.5: dir.x = -1
+	elif dir.x > 0.5: dir.x = 1
+	else: dir.x = 0
+	if dir.y < -0.5: dir.y = -1
+	elif dir.y > 0.5: dir.y = 1
+	else: dir.y = 0
+	return dir
+
 func _on_StateMachine_state_changed(state_name) -> void:
 	$State.text = state_name
 

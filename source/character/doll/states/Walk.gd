@@ -43,21 +43,12 @@ func _make_path():
 
 func _move():
 	if path:
-		direction = (path[0] - host.global_position).normalized()
-		_max_direction()
+		direction = host.get_direction(host.global_position, path[0])
 		_animation(host)
 		tween.stop(host)
 		tween.interpolate_property(host, "global_position", host.global_position, path[0], 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()
 		path.remove(0)
-
-func _max_direction():
-	if direction.x < -0.5: direction.x = -1
-	elif direction.x > 0.5: direction.x = 1
-	else: direction.x = 0
-	if direction.y < -0.5: direction.y = -1
-	elif direction.y > 0.5: direction.y = 1
-	else: direction.y = 0
 
 func _on_tween_completed(object: Object, key: NodePath) -> void:
 	steps += 1

@@ -55,6 +55,9 @@ func slash():
 		if body is Character and not body == self:
 			body.harm(damage)
 
+func get_direction_to_target():
+	pass
+
 func play_slash():
 	Audio.play_boy_slash()
 
