@@ -30,7 +30,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -159,3 +159,4 @@ script = ExtResource( 6 )
 [node name="Attack" type="Node" parent="StateMachine" index="2"]
 script = ExtResource( 7 )
 [connection signal="timeout" from="StateMachine/Idle/Timer" to="StateMachine/Idle" method="_on_Timer_timeout"]
+[connection signal="tween_completed" from="StateMachine/Walk/Tween" to="StateMachine/Walk" method="_on_Tween_tween_completed"]

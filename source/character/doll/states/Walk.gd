@@ -20,7 +20,6 @@ onready var tween := $Tween as Tween
 func enter(host):
 	self.host = host
 	host.anim.travel("walk")
-	tween.connect("tween_completed", self, "_on_tween_completed")
 	call_deferred("_make_path")
 
 func update(host, delta: float):
@@ -50,29 +49,9 @@ func _move():
 		tween.start()
 		path.remove(0)
 
-func _on_tween_completed(object: Object, key: NodePath) -> void:
+func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	steps += 1
 	if path and steps < steps_max:
 		_move()
 	else:
 		host.state_machine.change_state("idle")
-
-#func _unhandled_input(event: InputEvent) -> void:
-#	if event.is_action_pressed("mouse_right_button"):
-#		_make_path()
-#		tween.stop_all()
-#		_move()
-#
-#func _process(delta: float) -> void:
-#	update()
-#
-#func _make_path():
-#	path = Global.Navigation.get_simple_path(global_position, get_global_mouse_position(), false)
-#
-#
-#
-
-#
-
-
-
