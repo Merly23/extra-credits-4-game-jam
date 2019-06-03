@@ -26,7 +26,7 @@ func exit(host):
 	tween.stop_all()
 
 func update(host, delta: float):
-	if host.is_target_in_reach():
+	if host.is_target_in_attack_reach():
 		tween.stop_all()
 		host.state_machine.change_state("idle")
 

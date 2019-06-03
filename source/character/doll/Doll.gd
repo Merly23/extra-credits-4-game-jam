@@ -4,13 +4,16 @@ class_name Doll
 enum ANIMATION { IDLE, WALK, ATTACK, DIE }
 
 var motion := Vector2(0, 0)
-var reach := 25
+
+var attack_reach := 25
 
 var _target = null
 
 export(ANIMATION) var animation = ANIMATION.IDLE
 
 export var damage := 6
+export var reach := 220
+
 export(NodePath) var target = null
 
 onready var stick_area := $StickArea
@@ -43,7 +46,13 @@ func set_frame_offset(facing, animation):
 		FACING.LEFT: stick_area.position = Vector2(-14, 5)
 		FACING.RIGHT: stick_area.position = Vector2(14, 5)
 
-func is_target_in_reach() -> bool:
+func is_target_in_attack_reach() -> bool:
+	if _target:
+		var distance = (_target.global_position - global_position).length()
+		return distance < attack_reach
+	return false
+
+func is_target_in_sight() -> bool:
 	if _target:
 		var distance = (_target.global_position - global_position).length()
 		return distance < reach
@@ -68,7 +77,7 @@ func get_direction_to_target():
 	pass
 
 func play_slash():
-	Audio.play_boy_slash()
+	Audio.play_doll_slash()
 
 func play_step():
 	pass # Audio.play_boy_foodstep()
@@ -80,3 +89,6 @@ func _set_target(value):
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
 		state_machine.change_state("dead")
+
+func _draw() -> void:
+	draw_circle(to_local(global_position), reach, Color("33FFFFFF"))

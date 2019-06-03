@@ -8,7 +8,7 @@ func enter(host):
 
 	yield(get_tree().create_timer(0.8), "timeout")
 
-	if host.is_target_in_reach() and host.has_health():
+	if host.is_target_in_attack_reach() and host.has_health():
 		host.state_machine.change_state("attack")
 	elif host.has_health():
 		host.state_machine.change_state("walk")
