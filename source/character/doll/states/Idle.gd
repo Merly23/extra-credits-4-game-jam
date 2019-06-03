@@ -17,11 +17,15 @@ func enter(host):
 	timer.wait_time = rand_range(1.0, 2.0)
 	timer.start()
 
+func exit(host):
+	timer.stop()
+
 func update(host, delta: float):
 	if host.is_target_in_reach():
 		host.state_machine.change_state("attack")
 
 func input(host, event: InputEvent):
 	pass
+
 func _on_Timer_timeout() -> void:
 	host.state_machine.change_state("walk")

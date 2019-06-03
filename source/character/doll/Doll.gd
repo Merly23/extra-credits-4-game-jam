@@ -61,6 +61,9 @@ func slash():
 		if body is Character and not body == self:
 			body.harm(damage)
 
+func has_health():
+	return health > 0
+
 func get_direction_to_target():
 	pass
 

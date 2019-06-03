@@ -22,6 +22,9 @@ func enter(host):
 	host.anim.travel("walk")
 	call_deferred("_make_path")
 
+func exit(host):
+	tween.stop_all()
+
 func update(host, delta: float):
 	if host.is_target_in_reach():
 		tween.stop_all()

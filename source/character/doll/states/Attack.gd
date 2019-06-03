@@ -8,9 +8,9 @@ func enter(host):
 
 	yield(get_tree().create_timer(0.8), "timeout")
 
-	if host.is_target_in_reach():
+	if host.is_target_in_reach() and host.has_health():
 		host.state_machine.change_state("attack")
-	else:
+	elif host.has_health():
 		host.state_machine.change_state("walk")
 
 func get_facing(direction: Vector2, prev_facing):
