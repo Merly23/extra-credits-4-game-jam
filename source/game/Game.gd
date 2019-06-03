@@ -13,4 +13,7 @@ func _ready() -> void:
 	Global.Terrain = terrain
 
 func _process(delta: float) -> void:
-	game_cam.update_position(boy.global_position, girl.global_position)
+	if boy and girl:
+		game_cam.update_position(boy.global_position, girl.global_position)
+	elif boy:
+		game_cam.update_position(boy.global_position, boy.global_position)
