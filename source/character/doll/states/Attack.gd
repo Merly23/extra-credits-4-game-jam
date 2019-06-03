@@ -6,7 +6,7 @@ func enter(host):
 
 	host.anim.travel("attack")
 
-	yield(get_tree().create_timer(0.7), "timeout")
+	yield(get_tree().create_timer(0.8), "timeout")
 
 	if host.is_target_in_reach():
 		host.state_machine.change_state("attack")
