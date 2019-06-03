@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=2 format=2]
+[gd_resource type="TileSet" load_steps=3 format=2]
 
 [ext_resource path="res://graphics/images/terrain/terrain-transparent.png" type="Texture" id=1]
+[ext_resource path="res://graphics/images/objects/objects.png" type="Texture" id=2]
 
 [resource]
 0/name = "terrain-transparent.png 0"
@@ -403,3 +404,23 @@
 39/navigation_offset = Vector2( 0, 0 )
 39/shapes = [  ]
 39/z_index = 0
+40/name = "objects.png 40"
+40/texture = ExtResource( 2 )
+40/tex_offset = Vector2( 0, 0 )
+40/modulate = Color( 1, 1, 1, 1 )
+40/region = Rect2( 0, 32, 32, 32 )
+40/tile_mode = 0
+40/occluder_offset = Vector2( 0, 0 )
+40/navigation_offset = Vector2( 0, 0 )
+40/shapes = [  ]
+40/z_index = 0
+41/name = "objects.png 41"
+41/texture = ExtResource( 2 )
+41/tex_offset = Vector2( 0, 0 )
+41/modulate = Color( 1, 1, 1, 1 )
+41/region = Rect2( 0, 64, 32, 32 )
+41/tile_mode = 0
+41/occluder_offset = Vector2( 0, 0 )
+41/navigation_offset = Vector2( 0, 0 )
+41/shapes = [  ]
+41/z_index = 0
