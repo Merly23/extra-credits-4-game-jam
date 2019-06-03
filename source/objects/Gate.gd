@@ -1,15 +1,22 @@
 extends StaticBody2D
 
+export var open_on_start := false
+
 onready var anim := $AnimationPlayer as AnimationPlayer
 onready var coll := $CollisionShape2D as CollisionShape2D
 
 var opened := false
 
-func activate() -> void:
+func _ready() -> void:
+	if open_on_start:
+		activate(false)
+
+func activate(play_sound: bool = true) -> void:
 	opened = true
 	anim.play("open")
 	coll.disabled = true
-	Audio.play_plate()
+	if play_sound:
+		Audio.play_plate()
 
 func deactivate() -> void:
 	opened = false
