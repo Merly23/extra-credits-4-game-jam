@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="EC4"
-run/main_scene="res://source/interface/menus/TitleScreen.tscn"
+run/main_scene="res://source/interface/menu/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

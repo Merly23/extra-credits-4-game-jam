@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://source/interface/menu/Victory.gd" type="Script" id=2]
+[ext_resource path="res://graphics/fonts/pixelmix/pixelmix.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="Victory" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 120.0
+margin_top = 70.0
+margin_right = 200.0
+margin_bottom = 130.0
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
+text = "Victory"
+
+[node name="Again" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 38.0
+text = "Again"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 80.0
+margin_bottom = 60.0
+text = "Quit"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Again" to="." method="_on_Again_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

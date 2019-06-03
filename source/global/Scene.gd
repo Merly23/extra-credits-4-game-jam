@@ -2,6 +2,12 @@ extends CanvasLayer
 
 # Scenes
 const TitleScreen := "res://source/interface/menu/TitleScreen.tscn"
+const Controls := "res://source/interface/menu/Controls.tscn"
+const Credits := "res://source/interface/menu/Credits.tscn"
+
+const Victory := "res://source/interface/menu/Victory.tscn"
+const GameOver := "res://source/interface/menu/GameOver.tscn"
+
 const Level1 := "res://source/levels/Level1.tscn"
 
 var next_scene := ""

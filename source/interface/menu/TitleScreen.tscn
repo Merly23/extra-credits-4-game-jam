@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://source/interface/menu/TitleScreen.gd" type="Script" id=2]
+
+[node name="TitleScreen" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 136.0
+margin_top = 58.0
+margin_right = 184.0
+margin_bottom = 142.0
+
+[node name="Game" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 48.0
+margin_bottom = 18.0
+text = "Play"
+
+[node name="Controls" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 48.0
+margin_bottom = 40.0
+text = "Controls"
+
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 48.0
+margin_bottom = 62.0
+text = "Credits"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 48.0
+margin_bottom = 84.0
+text = "Quit"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Game" to="." method="_on_Game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

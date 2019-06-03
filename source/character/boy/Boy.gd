@@ -57,4 +57,4 @@ func play_step():
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
-		get_tree().reload_current_scene()
+		Scene.change(Scene.GameOver)
