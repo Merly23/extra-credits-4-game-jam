@@ -9,11 +9,13 @@ func activate() -> void:
 	opened = true
 	anim.play("open")
 	coll.disabled = true
+	Audio.play_plate()
 
 func deactivate() -> void:
 	opened = false
 	anim.play_backwards("open")
 	coll.disabled = false
+	Audio.play_plate()
 
 func toggle():
 	if opened:

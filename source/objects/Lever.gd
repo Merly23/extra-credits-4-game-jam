@@ -13,10 +13,12 @@ func _input(event: InputEvent) -> void:
 			anim.play_backwards("activate")
 			activated = false
 			emit_signal("deactivated")
+			Audio.play_lever()
 		else:
 			anim.play("activate")
 			activated = true
 			emit_signal("activated")
+			Audio.play_lever()
 
 func has_player() -> bool:
 	if Global.Boy and Global.Girl:
