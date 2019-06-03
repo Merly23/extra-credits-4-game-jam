@@ -23,6 +23,11 @@ func enter(host):
 	tween.connect("tween_completed", self, "_on_tween_completed")
 	call_deferred("_make_path")
 
+func update(host, delta: float):
+	if host.is_target_in_reach():
+		tween.stop_all()
+		host.state_machine.change_state("idle")
+
 func _animation(host):
 	match direction:
 		Vector2.UP: host.set_frame_offset(host.FACING.UP, host.ANIMATION.WALK)

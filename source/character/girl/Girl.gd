@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Girl
 
 var direction := Vector2()
 var path := []

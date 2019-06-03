@@ -1,12 +1,17 @@
 extends Character
+class_name Doll
 
 enum ANIMATION { IDLE, WALK, ATTACK }
 
 var motion := Vector2(0, 0)
+var reach := 25
+
+var _target = null
 
 export(ANIMATION) var animation = ANIMATION.IDLE
 
 export var damage := 6
+export(NodePath) var target = null
 
 onready var stick_area := $StickArea
 
@@ -16,6 +21,7 @@ func _ready() -> void:
 	state_machine.register_state("walk", "Walk")
 	state_machine.register_state("attack", "Attack")
 	state_machine.change_state("idle")
+	_set_target(target)
 
 func set_frame_offset(facing, animation):
 	self.facing = facing
@@ -31,16 +37,29 @@ func set_frame_offset(facing, animation):
 		FACING.LEFT: stick_area.position = Vector2(-14, 5)
 		FACING.RIGHT: stick_area.position = Vector2(14, 5)
 
+func is_target_in_reach() -> bool:
+	if _target:
+		var distance = (_target.global_position - global_position).length()
+		return distance < reach
+	return false
+
 func slash():
 	var areas = stick_area.get_overlapping_areas()
+	var bodies = stick_area.get_overlapping_bodies()
 
 	for area in areas:
 		if area is Attackable:
 			area.harm(damage)
-		break;
+
+	for body in bodies:
+		if body is Character and not body == self:
+			body.harm(damage)
 
 func play_slash():
-	pass # Audio.play_boy_slash()
+	Audio.play_boy_slash()
 
 func play_step():
 	pass # Audio.play_boy_foodstep()
+
+func _set_target(value):
+	_target = get_node(target)

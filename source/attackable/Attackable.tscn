@@ -2,7 +2,7 @@
 
 [ext_resource path="res://source/attackable/Attackable.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/characters/dummy.png" type="Texture" id=2]
-[ext_resource path="res://graphics/images/interface/white.png" type="Texture" id=3]
+[ext_resource path="res://source/interface/hud/HealthBar.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 11 )
@@ -19,16 +19,5 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -1 )
 
-[node name="HealthBar" type="TextureProgress" parent="."]
-margin_left = -7.0
-margin_top = -15.0
-margin_right = 7.0
-margin_bottom = -13.0
-max_value = 5.0
-value = 3.0
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 3 )
-tint_under = Color( 0, 0, 0, 0.392157 )
-tint_progress = Color( 1, 0, 0, 1 )
-nine_patch_stretch = true
+[node name="HealthBar" parent="." instance=ExtResource( 3 )]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

@@ -14,11 +14,12 @@ func enter(host):
 	host.set_frame_offset(host.facing, host.ANIMATION.IDLE)
 	host.anim.travel("idle")
 	randomize()
-	timer.wait_time = rand_range(2.0, 5.0)
+	timer.wait_time = rand_range(1.0, 2.0)
 	timer.start()
 
 func update(host, delta: float):
-	pass
+	if host.is_target_in_reach():
+		host.state_machine.change_state("attack")
 
 func input(host, event: InputEvent):
 	pass

@@ -1,4 +1,5 @@
 extends Character
+class_name Boy
 
 enum ANIMATION {IDLE, WALK, ATTACK }
 
@@ -34,14 +35,22 @@ func set_frame_offset(facing, animation):
 
 func slash():
 	var areas = stick_area.get_overlapping_areas()
+	var bodies = stick_area.get_overlapping_bodies()
 
 	for area in areas:
 		if area is Attackable:
 			area.harm(damage)
-		break;
+
+	for body in bodies:
+		if body is Character and not body == self and not body is Girl:
+			body.harm(damage)
 
 func play_slash():
 	Audio.play_boy_slash()
 
 func play_step():
 	Audio.play_boy_foodstep()
+
+func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+	if health <= 0:
+		get_tree().reload_current_scene()

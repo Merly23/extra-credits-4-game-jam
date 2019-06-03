@@ -3,7 +3,7 @@
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://graphics/tilesets/terrain.tres" type="TileSet" id=2]
 [ext_resource path="res://source/game/GameCam.gd" type="Script" id=3]
-[ext_resource path="res://source/character/girl/Ghost.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/character/girl/Girl.tscn" type="PackedScene" id=4]
 [ext_resource path="res://source/character/boy/Boy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/attackable/Attackable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://source/character/doll/Doll.tscn" type="PackedScene" id=7]
@@ -51,15 +51,19 @@ health_max = 20
 [node name="Doll" parent="Characters/Enemies" instance=ExtResource( 7 )]
 position = Vector2( 111.489, 32.6222 )
 frame_size = Vector2( 48, 48 )
+target = NodePath("../../Player/Boy")
 
 [node name="Doll2" parent="Characters/Enemies" instance=ExtResource( 7 )]
 position = Vector2( 207.205, 200.752 )
 frame_size = Vector2( 48, 48 )
+target = NodePath("../../Player/Boy")
 
 [node name="Doll3" parent="Characters/Enemies" instance=ExtResource( 7 )]
 position = Vector2( 494.449, 60.8273 )
 frame_size = Vector2( 48, 48 )
+target = NodePath("../../Player/Boy")
 
 [node name="Doll4" parent="Characters/Enemies" instance=ExtResource( 7 )]
 position = Vector2( 512.082, 259.907 )
 frame_size = Vector2( 48, 48 )
+target = NodePath("../../Player/Boy")
