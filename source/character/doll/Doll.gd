@@ -12,7 +12,7 @@ var _target = null
 export(ANIMATION) var animation = ANIMATION.IDLE
 
 export var damage := 6
-export var reach := 220
+export var reach := 120
 
 export(NodePath) var target = null
 
