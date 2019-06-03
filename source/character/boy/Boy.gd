@@ -38,8 +38,12 @@ func slash():
 	var bodies = stick_area.get_overlapping_bodies()
 
 	for area in areas:
+		print(area.name)
 		if area is Attackable:
 			area.harm(damage)
+
+		if area is Orb:
+			area.destroy()
 
 	for body in bodies:
 		if body is Character and not body == self and not body is Girl:

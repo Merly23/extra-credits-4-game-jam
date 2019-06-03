@@ -37,7 +37,7 @@ func _animation(host):
 
 func _make_path():
 	steps = 0
-	path = Global.Navigation.get_simple_path(host.global_position, Global.Boy.global_position, false)
+	path = Global.Navigation.get_simple_path(host.global_position, host.get_target_position(), false)
 	_move()
 
 func _move():

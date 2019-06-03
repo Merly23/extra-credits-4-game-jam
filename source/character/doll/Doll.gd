@@ -23,6 +23,11 @@ func _ready() -> void:
 	state_machine.change_state("idle")
 	_set_target(target)
 
+func get_target_position():
+	if _target:
+		return _target.global_position
+	return global_position
+
 func set_frame_offset(facing, animation):
 	self.facing = facing
 	self.animation = animation

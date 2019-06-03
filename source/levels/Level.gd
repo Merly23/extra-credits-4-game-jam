@@ -6,7 +6,7 @@ onready var terrain := $Navigation2D/Terrain as TileMap
 onready var game_cam := $GameCam as GameCam
 
 onready var boy := $Characters/Player/Boy
-onready var girl := $Characters/Player/Ghost
+onready var girl := $Characters/Player/Girl
 
 func _ready() -> void:
 	Global.Navigation = navigation

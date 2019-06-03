@@ -21,6 +21,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update()
 
+func blocked():
+	tween.stop_all()
+	tween.reset_all()
+	path = []
+
 func _make_path():
 	path = Global.Navigation.get_simple_path(global_position, get_global_mouse_position(), false)
 
