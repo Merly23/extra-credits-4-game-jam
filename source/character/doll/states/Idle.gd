@@ -21,11 +21,14 @@ func exit(host):
 	timer.stop()
 
 func update(host, delta: float):
-	if host.is_target_in_reach():
+	if host.is_target_in_attack_reach():
 		host.state_machine.change_state("attack")
 
 func input(host, event: InputEvent):
 	pass
 
 func _on_Timer_timeout() -> void:
-	host.state_machine.change_state("walk")
+	if host.is_target_in_sight():
+		host.state_machine.change_state("walk")
+	else:
+		timer.start()

@@ -11,12 +11,14 @@ const GameOver := "res://source/interface/menu/GameOver.tscn"
 const Level1 := "res://source/levels/Level1.tscn"
 
 var next_scene := ""
+var show_bar := false
 
 onready var scene_loader := $SceneLoader as SceneLoader
 onready var anim := $AnimationPlayer as AnimationPlayer
-onready var progress_bar := $ProgressBar as ProgressBar
+onready var progress_bar := $TextureProgress as TextureProgress
 
-func change(scene: String) -> void:
+func change(scene: String, show_bar: bool = false) -> void:
+	self.show_bar = show_bar
 	next_scene = scene
 	anim.play("fade_out")
 
@@ -28,7 +30,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func _on_ProgressBar_value_changed(value: float) -> void:
 	if progress_bar.max_value == value:
 		progress_bar.visible = false
-	elif not progress_bar.visible:
+	elif not progress_bar.visible and show_bar:
 		progress_bar.visible = true
 
 func _on_SceneLoader_scene_loaded(scene) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/global/Scene.gd" type="Script" id=1]
 [ext_resource path="res://source/tools/SceneLoader.gd" type="Script" id=2]
+[ext_resource path="res://graphics/images/interface/white.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -53,19 +54,21 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="TextureProgress" type="TextureProgress" parent="."]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -96.5
-margin_top = -12.5
-margin_right = 96.5
-margin_bottom = 12.5
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -12.0
 value = 50.0
 rounded = true
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
 [connection signal="scene_loaded" from="SceneLoader" to="." method="_on_SceneLoader_scene_loaded"]
 [connection signal="stage_changed" from="SceneLoader" to="." method="_on_SceneLoader_stage_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="value_changed" from="ProgressBar" to="." method="_on_ProgressBar_value_changed"]
+[connection signal="value_changed" from="TextureProgress" to="." method="_on_ProgressBar_value_changed"]
