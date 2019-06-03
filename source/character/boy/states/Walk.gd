@@ -32,7 +32,7 @@ func _movement(host, delta: float) -> void:
 	if direction == Vector2.ZERO:
 		host.state_machine.change_state("idle")
 	else:
-		host.move_and_collide(direction.normalized() * speed * delta)
+		host.move_and_slide(direction.normalized() * speed)
 
 func _animation(host):
 	match direction:
