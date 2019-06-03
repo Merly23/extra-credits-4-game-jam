@@ -90,23 +90,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_step"
-}, {
-"args": [  ],
-"method": "play_step"
-} ]
-}
 
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "attack"
@@ -150,7 +133,7 @@ start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[node name="Doll" instance=ExtResource( 1 )]
+[node name="Doll" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 frame_size = Vector2( 48, 48 )
 

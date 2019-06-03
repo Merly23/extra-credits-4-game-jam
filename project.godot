@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "Attackable",
-"language": "GDScript",
-"path": "res://source/attackable/Attackable.gd"
-}, {
 "base": "Character",
 "class": "Boy",
 "language": "GDScript",
@@ -60,7 +55,6 @@ _global_script_classes=[ {
 "path": "res://source/character/StateMachine.gd"
 } ]
 _global_script_class_icons={
-"Attackable": "",
 "Boy": "",
 "Character": "",
 "Doll": "",

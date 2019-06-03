@@ -62,10 +62,6 @@ func slash():
 	var areas = stick_area.get_overlapping_areas()
 	var bodies = stick_area.get_overlapping_bodies()
 
-	for area in areas:
-		if area is Attackable:
-			area.harm(damage)
-
 	for body in bodies:
 		if body is Character and not body == self:
 			body.harm(damage)
@@ -73,14 +69,16 @@ func slash():
 func has_health():
 	return health > 0
 
-func get_direction_to_target():
-	pass
+func knockback():
+	var knockback = 25
+
+	var direction = (Global.Boy.global_position - global_position).normalized()
+
+	tween.interpolate_property(self, "global_position", global_position, global_position + knockback * -direction, 0.1, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.start()
 
 func play_slash():
 	Audio.play_doll_slash()
-
-func play_step():
-	pass # Audio.play_boy_foodstep()
 
 func _set_target(value):
 	if value:
