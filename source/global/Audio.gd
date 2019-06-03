@@ -5,6 +5,7 @@ onready var boy_slash := $Boy/Slash as AudioStreamPlayer
 
 func _ready() -> void:
 	boy_footstep.volume_db = linear2db(0.1)
+
 func play_boy_foodstep():
 	randomize()
 	boy_footstep.pitch_scale = rand_range(0.9, 1.1)

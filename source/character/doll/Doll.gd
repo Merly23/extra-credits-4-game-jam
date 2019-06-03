@@ -40,7 +40,7 @@ func slash():
 		break;
 
 func play_slash():
-	Audio.play_boy_slash()
+	pass # Audio.play_boy_slash()
 
 func play_step():
-	Audio.play_boy_foodstep()
+	pass # Audio.play_boy_foodstep()

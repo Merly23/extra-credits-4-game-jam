@@ -13,20 +13,14 @@ func enter(host):
 	self.host = host
 	host.set_frame_offset(host.facing, host.ANIMATION.IDLE)
 	host.anim.travel("idle")
+	randomize()
+	timer.wait_time = rand_range(2.0, 5.0)
 	timer.start()
 
 func update(host, delta: float):
-	up = Input.is_action_pressed("ui_up")
-	down = Input.is_action_pressed("ui_down")
-	left = Input.is_action_pressed("ui_left")
-	right = Input.is_action_pressed("ui_right")
-
-	if up or down or left or right:
-		host.state_machine.change_state("walk")
+	pass
 
 func input(host, event: InputEvent):
-	if event.is_action_pressed("mouse_left_button"):
-		host.state_machine.change_state("attack")
-
+	pass
 func _on_Timer_timeout() -> void:
 	host.state_machine.change_state("walk")

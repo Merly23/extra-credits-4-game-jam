@@ -10,20 +10,18 @@ var down = false
 var left = false
 var right = false
 
-export var speed := 120
+var steps := 0
+
+export var speed := 100
+export var steps_max := 20
 
 onready var tween := $Tween as Tween
-onready var timer := $Timer
 
 func enter(host):
 	self.host = host
 	host.anim.travel("walk")
 	tween.connect("tween_completed", self, "_on_tween_completed")
 	call_deferred("_make_path")
-	timer.start()
-
-func exit(host):
-	timer.stop()
 
 func _animation(host):
 	match direction:
@@ -34,6 +32,7 @@ func _animation(host):
 	pass
 
 func _make_path():
+	steps = 0
 	path = Global.Navigation.get_simple_path(host.global_position, Global.Boy.global_position, false)
 	_move()
 
@@ -56,14 +55,11 @@ func _max_direction():
 	else: direction.y = 0
 
 func _on_tween_completed(object: Object, key: NodePath) -> void:
-	if path:
+	steps += 1
+	if path and steps < steps_max:
 		_move()
 	else:
 		host.state_machine.change_state("idle")
-
-func _on_Timer_timeout() -> void:
-	_make_path()
-	timer.start()
 
 #func _unhandled_input(event: InputEvent) -> void:
 #	if event.is_action_pressed("mouse_right_button"):
