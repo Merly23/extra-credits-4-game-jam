@@ -20,6 +20,6 @@ func _input(event: InputEvent) -> void:
 			emit_signal("activated")
 
 func has_player() -> bool:
-	if Global.Boy:
-		return get_overlapping_bodies().has(Global.Boy)
+	if Global.Boy and Global.Girl:
+		return get_overlapping_bodies().has(Global.Boy) or get_overlapping_bodies().has(Global.Girl)
 	return false
