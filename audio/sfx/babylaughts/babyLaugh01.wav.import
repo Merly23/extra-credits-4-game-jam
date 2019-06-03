@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/babyLaugh01.wav-262803b007e0c798210f8c94332a8031.sample"
+
+[deps]
+
+source_file="res://audio/sfx/babylaughts/babyLaugh01.wav"
+dest_files=[ "res://.import/babyLaugh01.wav-262803b007e0c798210f8c94332a8031.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
