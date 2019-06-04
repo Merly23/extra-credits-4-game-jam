@@ -167,7 +167,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 13 )
 
 [node name="CollisionShape2D" parent="." index="3"]
-position = Vector2( 0, 3 )
+position = Vector2( 0, 5 )
 
 [node name="Sprite" parent="." index="4"]
 texture = ExtResource( 3 )
