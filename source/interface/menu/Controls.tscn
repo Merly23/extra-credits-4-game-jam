@@ -14,28 +14,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 112.0
-margin_top = 30.0
-margin_right = 207.0
-margin_bottom = 169.0
+margin_left = 96.0
+margin_top = 15.0
+margin_right = 223.0
+margin_bottom = 184.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 95.0
-margin_bottom = 117.0
+margin_right = 127.0
+margin_bottom = 147.0
 text = "Boy:
 WASD - move
 LEFT CLICK - attack
 E or SPACE - interact
 
-Girl:
+Ghost:
 RIGHT CLICK - move
-E or SPACE - interact"
+E or SPACE - interact
+
+The Ghost can heal the Boy."
 align = 1
 valign = 1
 
 [node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 121.0
-margin_right = 95.0
-margin_bottom = 139.0
+margin_top = 151.0
+margin_right = 127.0
+margin_bottom = 169.0
 text = "Back"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
