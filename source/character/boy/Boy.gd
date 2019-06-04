@@ -17,6 +17,7 @@ func _ready() -> void:
 	state_machine.register_state("idle", "Idle")
 	state_machine.register_state("walk", "Walk")
 	state_machine.register_state("attack", "Attack")
+	state_machine.register_state("dead", "Dead")
 	state_machine.change_state("idle")
 
 func set_frame_offset(facing, animation):
@@ -54,4 +55,5 @@ func play_step():
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
+		state_machine.change_state("dead")
 		Scene.change(Scene.GameOver)
