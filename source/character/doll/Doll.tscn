@@ -134,7 +134,7 @@ end_node = "die"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
-[node name="Doll" index="0" instance=ExtResource( 1 )]
+[node name="Doll" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 frame_size = Vector2( 48, 48 )
 
