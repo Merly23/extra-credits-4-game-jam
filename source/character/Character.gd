@@ -16,8 +16,6 @@ onready var anim_tree := $AnimationTree as AnimationTree
 onready var anim = anim_tree.get("parameters/playback")
 onready var tween := $Tween as Tween
 
-onready var audio_player := $AudioStreamPlayer
-
 onready var sprite := $Sprite as Sprite
 
 onready var health_bar := $HealthBar as TextureProgress

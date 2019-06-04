@@ -44,5 +44,3 @@ region_rect = Rect2( 0, 17, 48, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 3 )
-[connection signal="body_entered" from="." to="." method="_on_Lever_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_Lever_body_exited"]
