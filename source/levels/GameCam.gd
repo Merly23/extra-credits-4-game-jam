@@ -6,7 +6,7 @@ onready var tween := $Tween as Tween
 func update_position(boy_position: Vector2, girl_position: Vector2) -> void:
 	var new_position := Vector2()
 
-	if (girl_position - boy_position).length() > 250:
+	if (girl_position - boy_position).length() > 185:
 		new_position = boy_position
 	else:
 		new_position = (boy_position + girl_position) / 2
