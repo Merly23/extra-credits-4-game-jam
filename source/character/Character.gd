@@ -23,6 +23,7 @@ onready var health_bar := $HealthBar as TextureProgress
 onready var state_machine = $StateMachine as StateMachine
 
 func _ready() -> void:
+	anim_tree.advance(0)
 	state_machine.host = self
 	health = health_max
 	health_bar.max_value = health_max
