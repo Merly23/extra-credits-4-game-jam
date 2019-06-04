@@ -1,17 +1,13 @@
 extends State
 
+var host
+
 func enter(host):
+	.enter(host)
+	self.host = host
+	host.anim.travel("attack")
 	var facing = get_facing(host.get_direction(host.global_position, host._target.global_position), host.facing)
 	host.set_frame_offset(facing, host.ANIMATION.ATTACK)
-
-	host.anim.travel("attack")
-
-	yield(get_tree().create_timer(0.8), "timeout")
-
-	if host.is_target_in_attack_reach() and host.has_health():
-		host.state_machine.change_state("attack")
-	elif host.has_health():
-		host.state_machine.change_state("walk")
 
 func get_facing(direction: Vector2, prev_facing):
 	match direction:
@@ -20,3 +16,6 @@ func get_facing(direction: Vector2, prev_facing):
 		Vector2.LEFT: return Character.FACING.LEFT
 		Vector2.RIGHT: return Character.FACING.RIGHT
 	return prev_facing
+
+func attack_finished():
+		host.state_machine.change_state("idle")

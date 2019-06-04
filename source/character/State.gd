@@ -2,11 +2,11 @@ extends Node
 class_name State
 
 func enter(host):
-	print("Enter State: ", name)
+	print(host, "Enter State: ", name)
 	pass
 
 func exit(host):
-	print("Exit State: ", name)
+	print(host, " Exit State: ", name)
 
 func update(host, delta):
 	pass

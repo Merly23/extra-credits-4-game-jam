@@ -18,6 +18,7 @@ export var steps_max := 20
 onready var tween := $Tween as Tween
 
 func enter(host):
+	.enter(host)
 	self.host = host
 	host.anim.travel("walk")
 	call_deferred("_make_path")
@@ -28,7 +29,7 @@ func exit(host):
 func update(host, delta: float):
 	if host.is_target_in_attack_reach():
 		tween.stop_all()
-		host.state_machine.change_state("idle")
+		host.state_machine.change_state("attack")
 
 func _animation(host):
 	match direction:
