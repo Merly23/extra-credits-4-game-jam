@@ -46,13 +46,24 @@ func _on_StateMachine_state_changed(state_name) -> void:
 func harm(damage: int) -> void:
 	health -= damage
 	tween.interpolate_property(health_bar, "value", health_bar.value, health, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
-	tween.interpolate_property(self, "modulate", Color("FF0000"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
-	tween.int
+	tween.interpolate_property(sprite, "modulate", Color("FF0000"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 	knockback()
 
+func heal(value: int) -> void:
+	health += value
+	if health > health_max:
+		health = health_max
+
+	tween.interpolate_property(health_bar, "value", health_bar.value, health, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.interpolate_property(sprite, "modulate", Color("00FF00"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.start()
+
 func knockback():
 	pass
+
+func is_health_max():
+	return health == health_max
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:

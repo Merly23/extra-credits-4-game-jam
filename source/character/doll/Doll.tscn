@@ -130,10 +130,11 @@ states/walk/node = SubResource( 8 )
 states/walk/position = Vector2( 444, 48 )
 transitions = [ "idle", "walk", SubResource( 9 ), "walk", "idle", SubResource( 10 ), "idle", "attack", SubResource( 11 ), "attack", "idle", SubResource( 12 ), "walk", "attack", SubResource( 13 ), "walk", "die", SubResource( 14 ), "attack", "die", SubResource( 15 ), "idle", "die", SubResource( 16 ) ]
 start_node = "idle"
+end_node = "die"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[node name="Doll" index="0" instance=ExtResource( 1 )]
+[node name="Doll" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 frame_size = Vector2( 48, 48 )
 

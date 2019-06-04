@@ -8,6 +8,7 @@ onready var tween := $Tween as Tween
 onready var anim := $AnimationPlayer as AnimationPlayer
 onready var sprite := $Sprite as Sprite
 
+onready var heal_area := $HealArea
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_right_button"):
@@ -74,3 +75,8 @@ func _draw():
 	if path:
 		for point in path:
 			draw_circle(to_local(point), 3, Color("FFFFFF"))
+
+func _on_Timer_timeout() -> void:
+	var bodies = heal_area.get_overlapping_bodies()
+	if bodies.has(Global.Boy) and not Global.Boy.is_health_max():
+		Global.Boy.heal(2)
