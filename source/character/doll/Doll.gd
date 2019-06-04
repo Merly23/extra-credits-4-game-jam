@@ -87,6 +87,3 @@ func _set_target(value):
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
 		state_machine.change_state("dead")
-
-func _draw() -> void:
-	draw_circle(to_local(global_position), reach, Color("33FFFFFF"))
