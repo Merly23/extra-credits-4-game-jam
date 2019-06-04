@@ -1,7 +1,7 @@
 extends Character
 class_name Boy
 
-enum ANIMATION {IDLE, WALK, ATTACK }
+enum ANIMATION {IDLE, WALK, ATTACK, DIE }
 
 var motion := Vector2(0, 0)
 
@@ -56,4 +56,3 @@ func play_step():
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
 		state_machine.change_state("dead")
-		Scene.change(Scene.GameOver)
