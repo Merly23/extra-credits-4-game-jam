@@ -24,7 +24,9 @@ func blocked():
 	path = []
 
 func _make_path():
-	path = Global.Navigation.get_simple_path(global_position, get_global_mouse_position(), false)
+	var mouse_position = get_global_mouse_position()
+	path = Global.Navigation.get_simple_path(global_position, mouse_position, false)
+	Global.Marker.mark(mouse_position)
 
 func _move():
 	if path:
