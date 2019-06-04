@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 
 func blocked():
 	tween.stop_all()
-	tween.reset_all()
 	path = []
 
 func _make_path():
@@ -64,6 +63,14 @@ func _walk_right():
 
 func _idle():
 	anim.play("idle")
+
+func knockback(center: Vector2):
+	var knockback = 15
+
+	var direction = (center - global_position).normalized()
+
+	tween.interpolate_property(self, "global_position", global_position, global_position + knockback * -direction, 0.1, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.start()
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if path:
