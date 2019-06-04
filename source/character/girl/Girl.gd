@@ -19,9 +19,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	Global.Girl = self
 
-func _process(delta: float) -> void:
-	update()
-
 func blocked():
 	tween.stop_all()
 	path = []
@@ -77,11 +74,6 @@ func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 		_move()
 	else:
 		_idle()
-
-func _draw():
-	if path:
-		for point in path:
-			draw_circle(to_local(point), 3, Color("FFFFFF"))
 
 func _on_Timer_timeout() -> void:
 	var bodies = heal_area.get_overlapping_bodies()
