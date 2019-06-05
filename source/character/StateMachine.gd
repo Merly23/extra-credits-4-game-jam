@@ -19,7 +19,6 @@ func register_state(id: String, node_path: String):
 	states[id] = get_node(node_path)
 
 func change_state(new_state):
-	host.sprite.frame = 0 # deal with the zero frame issue on state change
 
 	if current_state:
 		current_state.exit(host)

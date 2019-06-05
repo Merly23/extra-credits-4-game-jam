@@ -13,9 +13,3 @@ func _ready() -> void:
 	Audio.play_game_music()
 	Global.Navigation = navigation
 	Global.Terrain = terrain
-
-func _process(delta: float) -> void:
-	if boy and girl:
-		game_cam.update_position(boy.global_position, girl.global_position)
-	elif boy:
-		game_cam.update_position(boy.global_position, boy.global_position)
