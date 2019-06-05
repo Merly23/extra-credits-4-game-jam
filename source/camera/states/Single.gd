@@ -1,6 +1,6 @@
 extends State
 
-var tween_time := 0.12
+var tween_time := 0.14
 
 func enter(host):
 	if Global.Boy:
@@ -10,7 +10,7 @@ func enter(host):
 
 func exit(host):
 	host.tween.stop_all()
-	tween_time = 0.12
+	tween_time = 0.14
 
 func update(host, delta: float) -> void:
 	if host.characters_in_reach():
