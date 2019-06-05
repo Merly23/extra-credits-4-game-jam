@@ -7,12 +7,14 @@ onready var anim := $AnimationPlayer as AnimationPlayer
 
 func _on_Lever_body_entered(body: PhysicsBody2D) -> void:
 	if body == Global.Boy:
-		Audio.play_plate()
 		anim.play("activate")
+		Audio.play_plate()
+		yield(get_tree().create_timer(0.3), "timeout")
 		emit_signal("activated")
 
 func _on_Lever_body_exited(body: PhysicsBody2D) -> void:
 	if body == Global.Boy:
-		Audio.play_plate()
 		anim.play_backwards("activate")
+		Audio.play_plate()
+		yield(get_tree().create_timer(0.3), "timeout")
 		emit_signal("deactivated")

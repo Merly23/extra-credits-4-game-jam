@@ -3,9 +3,6 @@ extends Node
 var menu_music = preload("res://audio/music/happyFixed.wav")
 var game_music = preload("res://audio/music/gameLoop.wav")
 
-func _ready() -> void:
-	$Boy/Footstep.volume_db = linear2db(0.05)
-
 func play_ambience():
 	$Ambience.play()
 
@@ -20,6 +17,9 @@ func play_boy_slash():
 func play_doll_slash():
 	$Doll/Slash.play()
 
+func play_doll_die():
+	$Doll/Die.play()
+
 func play_lever():
 	$Lever.play()
 
@@ -28,6 +28,9 @@ func play_plate():
 
 func play_door():
 	$Door.play()
+
+func play_gate():
+	$Gate.play()
 
 func play_button():
 	$Button.play()
