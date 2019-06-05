@@ -5,6 +5,8 @@ var tween_time := 0.12
 func enter(host):
 	if Global.Boy:
 		host.targets = [ Global.Boy ]
+	else:
+		tween_time = -1
 
 func exit(host):
 	host.tween.stop_all()
