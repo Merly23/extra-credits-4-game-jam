@@ -10,7 +10,9 @@ var right = false
 export var speed := 120
 
 func enter(host):
+	host.set_frame_offset(host.facing, host.ANIMATION.WALK)
 	host.anim.travel("walk")
+	host.sprite.frame = 0
 
 func input(host, event: InputEvent):
 	if event.is_action_pressed("mouse_left_button"):

@@ -3,11 +3,11 @@ extends State
 var host
 
 func enter(host):
-	.enter(host)
 	self.host = host
-	host.anim.travel("attack")
 	var facing = get_facing(host.get_direction(host.global_position, host._target.global_position), host.facing)
 	host.set_frame_offset(facing, host.ANIMATION.ATTACK)
+	host.anim.travel("attack")
+	host.sprite.frame = 0
 
 func get_facing(direction: Vector2, prev_facing):
 	match direction:

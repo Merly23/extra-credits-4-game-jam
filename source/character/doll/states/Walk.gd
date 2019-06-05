@@ -18,9 +18,9 @@ export var steps_max := 20
 onready var tween := $Tween as Tween
 
 func enter(host):
-	.enter(host)
 	self.host = host
 	host.anim.travel("walk")
+	host.sprite.frame = 0
 	call_deferred("_make_path")
 
 func exit(host):

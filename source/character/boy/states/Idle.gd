@@ -8,6 +8,7 @@ var right = false
 func enter(host):
 	host.set_frame_offset(host.facing, host.ANIMATION.IDLE)
 	host.anim.travel("idle")
+	host.sprite.frame = 0
 
 func exit(host):
 	.exit(host)

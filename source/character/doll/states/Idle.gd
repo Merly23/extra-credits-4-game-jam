@@ -10,10 +10,10 @@ var right = false
 onready var timer = $Timer
 
 func enter(host):
-	.enter(host)
 	self.host = host
 	host.set_frame_offset(host.facing, host.ANIMATION.IDLE)
 	host.anim.travel("idle")
+	host.sprite.frame = 0
 	randomize()
 	timer.wait_time = rand_range(0.5, 1.2)
 	timer.start()
