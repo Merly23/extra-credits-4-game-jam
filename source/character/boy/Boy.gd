@@ -47,6 +47,10 @@ func slash():
 		if body is Character and not body == self and not body is Girl:
 			body.harm(damage)
 
+func harm(damage: int) -> void:
+	.harm(damage)
+	Audio.play_boy_hit()
+
 func play_slash():
 	Audio.play_boy_slash()
 

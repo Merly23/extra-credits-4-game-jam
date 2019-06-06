@@ -14,8 +14,14 @@ func play_boy_foodstep():
 func play_boy_slash():
 	$Boy/Slash.play()
 
+func play_boy_hit():
+	$Boy/Hit.play()
+
 func play_doll_slash():
 	$Doll/Slash.play()
+
+func play_doll_hit():
+	$Doll/Hit.play()
 
 func play_doll_die():
 	$Doll/Die.play()

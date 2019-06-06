@@ -77,6 +77,10 @@ func knockback():
 	tween.interpolate_property(self, "global_position", global_position, global_position + knockback * -direction, 0.1, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
+func harm(damage: int) -> void:
+	.harm(damage)
+	Audio.play_doll_hit()
+
 func play_slash():
 	Audio.play_doll_slash()
 
