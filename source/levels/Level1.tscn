@@ -18,7 +18,6 @@
 [ext_resource path="res://source/character/doll/Doll.tscn" type="PackedScene" id=16]
 [ext_resource path="res://source/interface/hud/Marker.tscn" type="PackedScene" id=17]
 
-
 [node name="Level1" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -188,19 +187,19 @@ target = NodePath("../../Player/Boy")
 [connection signal="deactivated" from="Navigation2D/Objects/Lever5" to="Navigation2D/Objects/VDoor5" method="deactivate"]
 [connection signal="activated" from="Navigation2D/Objects/Lever6" to="Navigation2D/Objects/HGate6" method="activate"]
 [connection signal="deactivated" from="Navigation2D/Objects/Lever6" to="Navigation2D/Objects/HGate6" method="deactivate"]
-[connection signal="activated" from="Navigation2D/Objects/LeverF1" to="Navigation2D/Objects/VDoorP1" method="toggle"]
 [connection signal="activated" from="Navigation2D/Objects/LeverF1" to="Navigation2D/Objects/HDoorF3" method="deactivate"]
-[connection signal="deactivated" from="Navigation2D/Objects/LeverF1" to="Navigation2D/Objects/VDoorP1" method="toggle"]
+[connection signal="activated" from="Navigation2D/Objects/LeverF1" to="Navigation2D/Objects/VDoorP1" method="toggle"]
 [connection signal="deactivated" from="Navigation2D/Objects/LeverF1" to="Navigation2D/Objects/HDoorF3" method="activate"]
+[connection signal="deactivated" from="Navigation2D/Objects/LeverF1" to="Navigation2D/Objects/VDoorP1" method="toggle"]
 [connection signal="activated" from="Navigation2D/Objects/PlateP1" to="Navigation2D/Objects/VDoorP1" method="toggle"]
 [connection signal="deactivated" from="Navigation2D/Objects/PlateP1" to="Navigation2D/Objects/VDoorP1" method="toggle"]
 [connection signal="activated" from="Navigation2D/Objects/PlateP2" to="Navigation2D/Objects/HDoorP2" method="activate"]
 [connection signal="deactivated" from="Navigation2D/Objects/PlateP2" to="Navigation2D/Objects/HDoorP2" method="deactivate"]
 [connection signal="activated" from="Navigation2D/Objects/LeverP3" to="Navigation2D/Objects/VGateP2" method="activate"]
-[connection signal="activated" from="Navigation2D/Objects/LeverF2" to="Navigation2D/Objects/HDoorP3" method="activate"]
 [connection signal="activated" from="Navigation2D/Objects/LeverF2" to="Navigation2D/Objects/HDoorF2" method="deactivate"]
-[connection signal="deactivated" from="Navigation2D/Objects/LeverF2" to="Navigation2D/Objects/HDoorP3" method="deactivate"]
+[connection signal="activated" from="Navigation2D/Objects/LeverF2" to="Navigation2D/Objects/HDoorP3" method="activate"]
 [connection signal="deactivated" from="Navigation2D/Objects/LeverF2" to="Navigation2D/Objects/HDoorF2" method="activate"]
+[connection signal="deactivated" from="Navigation2D/Objects/LeverF2" to="Navigation2D/Objects/HDoorP3" method="deactivate"]
 [connection signal="activated" from="Navigation2D/Objects/LeverF3" to="Navigation2D/Objects/HDoorF" method="activate"]
 [connection signal="deactivated" from="Navigation2D/Objects/LeverF3" to="Navigation2D/Objects/HDoorF" method="deactivate"]
 [connection signal="ready" from="Characters/Player/Boy" to="GameCam" method="_on_Boy_ready"]
