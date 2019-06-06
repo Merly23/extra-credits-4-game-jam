@@ -22,7 +22,9 @@ func get_target_position() -> Vector2:
 	return new_position / targets.size()
 
 func characters_in_reach() -> bool:
-	return (Global.Girl.global_position - Global.Boy.global_position).length() < 185
+	if Global.Boy and Global.Girl:
+		return (Global.Girl.global_position - Global.Boy.global_position).length() < 185
+	return false
 
 func _set_targets(value) -> void:
 	targets = value

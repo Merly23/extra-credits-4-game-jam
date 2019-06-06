@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://graphics/tilesets/navigation.tres" type="TileSet" id=1]
+[ext_resource path="res://graphics/tilesets/floor.tres" type="TileSet" id=2]
+[ext_resource path="res://graphics/tilesets/embellishment.tres" type="TileSet" id=3]
+[ext_resource path="res://graphics/tilesets/walls.tres" type="TileSet" id=4]
+
+[node name="Room" type="YSort"]
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Navigation" type="TileMap" parent="Map"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Floor" type="TileMap" parent="Map"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Embellishment" type="TileMap" parent="Map"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Walls" type="TileMap" parent="YSort"]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+cell_y_sort = true
+format = 1
+
+[node name="Objects" type="YSort" parent="YSort"]
