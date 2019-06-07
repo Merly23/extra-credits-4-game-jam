@@ -9,7 +9,6 @@ onready var boy := $Characters/Player/Boy
 onready var girl := $Characters/Player/Girl
 
 func _ready() -> void:
-	Audio.play_ambience()
 	Audio.play_game_music()
 	Global.Navigation = navigation
 	Global.Terrain = terrain
