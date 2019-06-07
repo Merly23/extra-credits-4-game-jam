@@ -15,8 +15,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 85.0
+margin_top = 1.0
 margin_right = 234.0
-margin_bottom = 199.0
+margin_bottom = 198.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 149.0
@@ -39,6 +40,8 @@ valign = 1
 [node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 181.0
 margin_right = 149.0
-margin_bottom = 199.0
+margin_bottom = 197.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Back"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

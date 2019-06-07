@@ -26,6 +26,8 @@ custom_constants/separation = 8
 margin_right = 60.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 60, 0 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Play"
 
 [node name="Controls" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -33,6 +35,8 @@ margin_top = 24.0
 margin_right = 60.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 60, 0 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Controls"
 
 [node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -40,6 +44,8 @@ margin_top = 48.0
 margin_right = 60.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 60, 0 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Credits"
 
 [node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -47,6 +53,8 @@ margin_top = 72.0
 margin_right = 60.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 60, 0 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Quit"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Game" to="." method="_on_Game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
