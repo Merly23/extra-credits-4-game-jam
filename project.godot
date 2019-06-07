@@ -82,7 +82,6 @@ Audio="*res://source/global/Audio.tscn"
 
 window/size/width=320
 window/size/height=200
-window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=800
 window/stretch/mode="viewport"
