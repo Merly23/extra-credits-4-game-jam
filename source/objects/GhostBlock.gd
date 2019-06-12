@@ -8,5 +8,6 @@ func _on_GhostBlock_body_entered(body: PhysicsBody2D) -> void:
 		body.blocked()
 		body.knockback(global_position)
 
-	if body is Doll:
+	if body is Doll and not disabled:
+		body.blocked()
 		body.knockback(self)

@@ -69,7 +69,13 @@ func slash():
 func has_health():
 	return health > 0
 
+func blocked():
+	tween.stop_all()
+	tween.remove_all()
+	state_machine.change_state("idle")
+
 func knockback(origin, force := 25):
+	print("knockback")
 	.knockback(origin, force)
 
 	var direction := Vector2()

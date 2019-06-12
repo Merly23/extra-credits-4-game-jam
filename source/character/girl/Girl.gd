@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func blocked():
 	tween.stop_all()
+	tween.remove_all()
 	path = []
 
 func _make_path():

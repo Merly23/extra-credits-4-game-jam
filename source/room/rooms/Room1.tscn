@@ -24,12 +24,12 @@ tile_data = PoolIntArray( 0, 30, 0, 1, 30, 0, 2, 30, 0, 3, 30, 0, 4, 30, 0, 5, 3
 position = Vector2( 154, 112 )
 
 [node name="HDoor" parent="Objects" index="1" instance=ExtResource( 3 )]
-position = Vector2( 336, 176 )
+position = Vector2( 336, 177 )
 
 [node name="Lever" parent="Objects" index="2" instance=ExtResource( 4 )]
 position = Vector2( 300, 166 )
 
 [node name="Doll" parent="Enemies" index="0" instance=ExtResource( 5 )]
-position = Vector2( 365, 227 )
+position = Vector2( 390, 256 )
 [connection signal="activated" from="Objects/Lever" to="Objects/HDoor" method="activate"]
 [connection signal="deactivated" from="Objects/Lever" to="Objects/HDoor" method="deactivate"]

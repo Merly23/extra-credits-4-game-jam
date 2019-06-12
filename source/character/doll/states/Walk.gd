@@ -25,6 +25,8 @@ func enter(host):
 
 func exit(host):
 	tween.stop_all()
+	tween.remove_all()
+	path = []
 
 func update(host, delta: float):
 	if host.is_target_in_attack_reach():
