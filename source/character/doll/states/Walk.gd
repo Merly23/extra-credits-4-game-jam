@@ -40,6 +40,10 @@ func _animation(host):
 	pass
 
 func _make_path():
+
+	if not Global.Navigation:
+		return
+
 	steps = 0
 	path = Global.Navigation.get_simple_path(host.global_position, host.get_target_position(), false)
 	_move()
