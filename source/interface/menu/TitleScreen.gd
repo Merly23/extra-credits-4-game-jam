@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _on_Game_pressed() -> void:
 	Audio.play_button()
-	Scene.change(Scene.Level1, true)
+	Scene.change(Scene.Room1, true)
 
 func _on_Controls_pressed() -> void:
 	Audio.play_button()
