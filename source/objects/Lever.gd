@@ -6,7 +6,7 @@ signal deactivated
 var activated = false
 
 onready var anim := $AnimationPlayer as AnimationPlayer
-onready var area := $Area2D
+onready var area := $Area2D as Area2D
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and has_player():
@@ -24,6 +24,6 @@ func _input(event: InputEvent) -> void:
 			emit_signal("activated")
 
 func has_player() -> bool:
-	if Global.Boy and Global.Girl:
+	if Global.Boy or Global.Girl:
 		return area.get_overlapping_bodies().has(Global.Boy) or area.get_overlapping_bodies().has(Global.Girl)
 	return false

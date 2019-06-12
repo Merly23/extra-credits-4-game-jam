@@ -37,6 +37,6 @@ position = Vector2( 0, 7 )
 texture = ExtResource( 2 )
 hframes = 3
 region_enabled = true
-region_rect = Rect2( 0, 1, 48, 16 )
+region_rect = Rect2( 0, 0, 48, 16 )
 [connection signal="body_entered" from="." to="." method="_on_Lever_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Lever_body_exited"]
