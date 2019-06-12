@@ -23,7 +23,9 @@ func get_target_position() -> Vector2:
 
 func characters_in_reach() -> bool:
 	if Global.Boy and Global.Girl:
-		return (Global.Girl.global_position - Global.Boy.global_position).length() < 185
+		var dist_vec = Global.Girl.global_position - Global.Boy.global_position
+		dist_vec.x *= 0.60
+		return dist_vec.length() < 175
 	return false
 
 func _set_targets(value) -> void:
