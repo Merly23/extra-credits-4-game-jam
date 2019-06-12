@@ -87,6 +87,9 @@ func play_slash():
 func play_die():
 	Audio.play_doll_die()
 
+func set_target_node(value):
+	_target = value
+
 func _set_target(value):
 	if value:
 		_target = get_node(target)

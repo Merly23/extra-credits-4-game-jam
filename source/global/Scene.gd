@@ -8,7 +8,7 @@ const Credits := "res://source/interface/menu/Credits.tscn"
 const Victory := "res://source/interface/menu/Victory.tscn"
 const GameOver := "res://source/interface/menu/GameOver.tscn"
 
-const Room1 := "res://source/room/rooms/Room1.tscn"
+const Game := "res://source/game/Game.tscn"
 
 var next_scene := ""
 var show_bar := false
