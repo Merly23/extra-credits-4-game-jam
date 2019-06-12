@@ -5,6 +5,9 @@ enum FACING { DOWN, RIGHT, UP, LEFT }
 
 var health := 0
 
+var knocked_back := false
+var knockback_direction := Vector2()
+
 export(FACING) var facing := FACING.DOWN
 
 export var health_max := 20
@@ -17,6 +20,8 @@ onready var anim = anim_tree.get("parameters/playback")
 onready var tween := $Tween as Tween
 
 onready var sprite := $Sprite as Sprite
+
+onready var knockback_timer := $KnockbackTimer as Timer
 
 onready var health_bar := $HealthBar as TextureProgress
 
@@ -42,12 +47,12 @@ func get_direction(a: Vector2, b: Vector2) -> Vector2:
 func _on_StateMachine_state_changed(state_name) -> void:
 	$State.text = state_name
 
-func harm(damage: int) -> void:
+func harm(origin, damage: int) -> void:
 	health -= damage
 	tween.interpolate_property(health_bar, "value", health_bar.value, health, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.interpolate_property(sprite, "modulate", Color("FF0000"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
-	knockback()
+	knockback(origin)
 
 func heal(value: int) -> void:
 	health += value
@@ -58,8 +63,9 @@ func heal(value: int) -> void:
 	tween.interpolate_property(sprite, "modulate", Color("00FF00"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
-func knockback():
-	pass
+func knockback(origin, force := 25):
+	knocked_back = true
+	knockback_timer.start()
 
 func is_health_max():
 	return health == health_max
@@ -67,3 +73,9 @@ func is_health_max():
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
 		queue_free()
+
+func _on_KnockbackTimer_timeout() -> void:
+	knocked_back = false
+
+func _on_KnockbackChecker_body_entered(body: PhysicsBody2D) -> void:
+	knockback(body, 10)

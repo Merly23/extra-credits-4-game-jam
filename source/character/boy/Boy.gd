@@ -43,13 +43,13 @@ func slash():
 
 	for body in bodies:
 		if body is Character and not body == self and not body is Girl:
-			body.harm(damage)
+			body.harm(self, damage)
 
 		if body is Orb:
 			body.destroy()
 
-func harm(damage: int) -> void:
-	.harm(damage)
+func harm(origin, damage: int) -> void:
+	.harm(origin, damage)
 	Audio.play_boy_hit()
 
 func play_slash():

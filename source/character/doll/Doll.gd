@@ -64,21 +64,29 @@ func slash():
 
 	for body in bodies:
 		if body is Character and not body == self:
-			body.harm(damage)
+			body.harm(self, damage)
 
 func has_health():
 	return health > 0
 
-func knockback():
-	var knockback = 25
+func knockback(origin, force := 25):
+	.knockback(origin, force)
 
-	var direction = (Global.Boy.global_position - global_position).normalized()
+	var direction := Vector2()
 
-	tween.interpolate_property(self, "global_position", global_position, global_position + knockback * -direction, 0.1, Tween.TRANS_SINE, Tween.EASE_OUT)
+	if not origin:
+		direction = -knockback_direction
+	else:
+		direction = -(origin.global_position - global_position).normalized()
+
+	knockback_direction = direction
+
+	tween.stop_all()
+	tween.interpolate_property(self, "global_position", global_position, global_position + force * direction, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
-func harm(damage: int) -> void:
-	.harm(damage)
+func harm(origin, damage: int) -> void:
+	.harm(origin, damage)
 	Audio.play_doll_hit()
 
 func play_slash():
