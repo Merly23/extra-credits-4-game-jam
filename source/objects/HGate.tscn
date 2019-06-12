@@ -20,7 +20,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 9 )
+extents = Vector2( 16, 7 )
 
 [node name="HGate" type="StaticBody2D"]
 script = ExtResource( 1 )
@@ -29,11 +29,12 @@ script = ExtResource( 1 )
 anims/open = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5 )
+position = Vector2( 0, -8 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -15 )
 texture = ExtResource( 2 )
 hframes = 4
 region_enabled = true
-region_rect = Rect2( 0, 129, 128, 32 )
+region_rect = Rect2( 0, 128, 128, 32 )

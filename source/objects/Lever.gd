@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 signal activated
 signal deactivated
@@ -6,6 +6,7 @@ signal deactivated
 var activated = false
 
 onready var anim := $AnimationPlayer as AnimationPlayer
+onready var area := $Area2D
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and has_player():
@@ -24,5 +25,5 @@ func _input(event: InputEvent) -> void:
 
 func has_player() -> bool:
 	if Global.Boy and Global.Girl:
-		return get_overlapping_bodies().has(Global.Boy) or get_overlapping_bodies().has(Global.Girl)
+		return area.get_overlapping_bodies().has(Global.Boy) or area.get_overlapping_bodies().has(Global.Girl)
 	return false

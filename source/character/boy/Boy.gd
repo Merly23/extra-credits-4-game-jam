@@ -29,23 +29,20 @@ func set_frame_offset(facing, animation):
 		sprite.region_rect = Rect2(Vector2(0, frame_offset), sprite.region_rect.size)
 
 	match facing:
-		FACING.UP: stick_area.position = Vector2(0, -9)
-		FACING.DOWN: stick_area.position = Vector2(0, 19)
-		FACING.LEFT: stick_area.position = Vector2(-14, 5)
-		FACING.RIGHT: stick_area.position = Vector2(14, 5)
+		FACING.UP: stick_area.position = Vector2(0, -21)
+		FACING.DOWN: stick_area.position = Vector2(0, 7)
+		FACING.LEFT: stick_area.position = Vector2(-14, -7)
+		FACING.RIGHT: stick_area.position = Vector2(14, -7)
 
 func slash():
-	var areas = stick_area.get_overlapping_areas()
 	var bodies = stick_area.get_overlapping_bodies()
-
-	for area in areas:
-
-		if area is Orb:
-			area.destroy()
 
 	for body in bodies:
 		if body is Character and not body == self and not body is Girl:
 			body.harm(damage)
+
+		if body is Orb:
+			body.destroy()
 
 func harm(damage: int) -> void:
 	.harm(damage)

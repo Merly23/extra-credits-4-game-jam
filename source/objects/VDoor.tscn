@@ -33,16 +33,18 @@ script = ExtResource( 1 )
 anims/open = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 3 )
+position = Vector2( 0, 13 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 10 )
 texture = ExtResource( 2 )
 hframes = 4
 region_enabled = true
 region_rect = Rect2( 0, 32, 128, 32 )
 
 [node name="GhostBlock" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 10 )
 
 [node name="CollisionShape2D" parent="GhostBlock" index="0"]
 shape = SubResource( 3 )

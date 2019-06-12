@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/character/girl/Girl.gd"
 }, {
-"base": "Area2D",
+"base": "StaticBody2D",
 "class": "Orb",
 "language": "GDScript",
 "path": "res://source/objects/Orb.gd"
