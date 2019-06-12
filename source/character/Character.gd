@@ -41,7 +41,7 @@ func get_direction(a: Vector2, b: Vector2) -> Vector2:
 	return dir
 
 func _on_StateMachine_state_changed(state_name) -> void:
-	pass
+	print(self, ": ", state_name)
 
 func harm(origin, damage: int) -> void:
 	health -= damage
