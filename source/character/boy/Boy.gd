@@ -51,6 +51,23 @@ func slash():
 func harm(origin, damage: int) -> void:
 	.harm(origin, damage)
 	Audio.play_boy_hit()
+	knockback(origin, 10)
+
+func knockback(origin, force := 25):
+	.knockback(origin, force)
+
+	var direction := Vector2()
+
+	if not origin:
+		direction = -knockback_direction
+	else:
+		direction = -(origin.global_position - global_position).normalized()
+
+	knockback_direction = direction
+
+	tween.stop(self, "global_position")
+	tween.interpolate_property(self, "global_position", global_position, global_position + force * direction, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.start()
 
 func play_slash():
 	Audio.play_boy_slash()

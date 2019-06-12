@@ -23,16 +23,12 @@ onready var sprite := $Sprite as Sprite
 
 onready var knockback_timer := $KnockbackTimer as Timer
 
-onready var health_bar := $HealthBar as TextureProgress
-
 onready var state_machine = $StateMachine as StateMachine
 
 func _ready() -> void:
 	anim_tree.advance(0)
 	state_machine.host = self
 	health = health_max
-	health_bar.max_value = health_max
-	health_bar.value = health
 
 func get_direction(a: Vector2, b: Vector2) -> Vector2:
 	var dir = (b - a).normalized()
@@ -45,11 +41,10 @@ func get_direction(a: Vector2, b: Vector2) -> Vector2:
 	return dir
 
 func _on_StateMachine_state_changed(state_name) -> void:
-	$State.text = state_name
+	pass
 
 func harm(origin, damage: int) -> void:
 	health -= damage
-	tween.interpolate_property(health_bar, "value", health_bar.value, health, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.interpolate_property(sprite, "modulate", Color("FF0000"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 	knockback(origin)
@@ -59,7 +54,6 @@ func heal(value: int) -> void:
 	if health > health_max:
 		health = health_max
 
-	tween.interpolate_property(health_bar, "value", health_bar.value, health, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.interpolate_property(sprite, "modulate", Color("00FF00"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
@@ -78,4 +72,4 @@ func _on_KnockbackTimer_timeout() -> void:
 	knocked_back = false
 
 func _on_KnockbackChecker_body_entered(body: PhysicsBody2D) -> void:
-	knockback(body, 10)
+	knockback(body, 5)

@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/character/Character.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/characters/character.png" type="Texture" id=2]
 [ext_resource path="res://source/character/StateMachine.gd" type="Script" id=3]
-[ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=4]
-[ext_resource path="res://source/interface/hud/HealthBar.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 4 )
@@ -35,21 +33,6 @@ texture = ExtResource( 2 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
-
-[node name="State" type="Label" parent="."]
-visible = false
-margin_left = -25.0
-margin_top = 15.0
-margin_right = 24.0
-margin_bottom = 27.0
-theme = ExtResource( 4 )
-text = "State Name"
-align = 1
-valign = 1
-
-[node name="HealthBar" parent="." instance=ExtResource( 5 )]
-margin_top = -30.0
-margin_bottom = -28.0
 
 [node name="KnockbackChecker" type="Area2D" parent="."]
 

@@ -81,7 +81,7 @@ func knockback(origin, force := 25):
 
 	knockback_direction = direction
 
-	tween.stop_all()
+	tween.stop(self, "global_position")
 	tween.interpolate_property(self, "global_position", global_position, global_position + force * direction, 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
