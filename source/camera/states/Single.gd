@@ -6,7 +6,7 @@ func enter(host):
 	if Global.Boy:
 		host.targets = [ Global.Boy ]
 	else:
-		tween_time = -1
+		tween_time = 0
 
 func exit(host):
 	host.tween.stop_all()
@@ -17,8 +17,8 @@ func update(host, delta: float) -> void:
 		host.state_machine.change_state("double")
 
 	if tween_time > 0:
-		tween_time -= delta / 10
 		host.tween.interpolate_property(host, "global_position", host.global_position, host.get_target_position(), tween_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 		host.tween.start()
+		tween_time -= delta / 10
 	else:
 		host.global_position = host.get_target_position()
