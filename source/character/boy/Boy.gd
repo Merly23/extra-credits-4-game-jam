@@ -33,7 +33,7 @@ func set_frame_offset(facing, animation):
 		sprite.region_rect = Rect2(Vector2(0, frame_offset), sprite.region_rect.size)
 
 	match facing:
-		FACING.UP: stick_area.position = Vector2(0, -21)
+		FACING.UP: stick_area.position = Vector2(0, -17)
 		FACING.DOWN: stick_area.position = Vector2(0, 7)
 		FACING.LEFT: stick_area.position = Vector2(-14, -7)
 		FACING.RIGHT: stick_area.position = Vector2(14, -7)

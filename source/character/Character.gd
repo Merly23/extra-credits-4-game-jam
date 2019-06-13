@@ -72,4 +72,5 @@ func _on_KnockbackTimer_timeout() -> void:
 	knocked_back = false
 
 func _on_KnockbackChecker_body_entered(body: PhysicsBody2D) -> void:
-	knockback(body, 5)
+	if self != Global.Boy:
+		knockback(body, 10)
