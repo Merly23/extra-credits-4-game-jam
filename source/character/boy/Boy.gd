@@ -12,7 +12,6 @@ export var damage := 6
 onready var stick_area := $StickArea
 
 func _ready() -> void:
-
 	Global.Boy = self
 	anim_tree.active = true
 
@@ -23,6 +22,8 @@ func _ready() -> void:
 	state_machine.change_state("idle")
 
 	get_tree().call_group("Doll", "set_target_node", self)
+	get_tree().call_group("Interface", "update_boy_max_health", health_max)
+	get_tree().call_group("Interface", "update_boy_max_health", health)
 
 func set_frame_offset(facing, animation):
 	self.facing = facing
@@ -50,8 +51,13 @@ func slash():
 
 func harm(origin, damage: int) -> void:
 	.harm(origin, damage)
+	get_tree().call_group("Interface", "update_boy_health", health)
 	Audio.play_boy_hit()
 	knockback(origin, 10)
+
+func heal(value: int) -> void:
+	.heal(value)
+	get_tree().call_group("Interface", "update_boy_health", health)
 
 func knockback(origin, force := 25):
 	.knockback(origin, force)
