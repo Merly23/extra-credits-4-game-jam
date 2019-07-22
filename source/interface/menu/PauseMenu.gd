@@ -50,10 +50,10 @@ func _on_Tween_tween_all_completed() -> void:
 		background.hide()
 
 func _on_Resume_pressed() -> void:
-	Audio.play_button()
+	Audio.play_sfx("button")
 	fade_out()
 
 func _on_Quit_pressed() -> void:
 	get_tree().paused = false
-	Audio.play_button()
+	Audio.play_sfx("button")
 	Scene.change(Scene.TitleScreen)

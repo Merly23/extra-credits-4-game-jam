@@ -93,13 +93,13 @@ func knockback(origin, force := 25):
 
 func harm(origin, damage: int) -> void:
 	.harm(origin, damage)
-	Audio.play_doll_hit()
+	Audio.play_sfx("doll_hit")
 
 func play_slash():
-	Audio.play_doll_slash()
+	Audio.play_sfx("doll_slash")
 
 func play_die():
-	Audio.play_doll_die()
+	Audio.play_sfx("doll_die")
 
 func set_target_node(value):
 	_target = value

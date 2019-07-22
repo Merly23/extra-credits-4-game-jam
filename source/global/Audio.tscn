@@ -1,19 +1,25 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://source/global/Audio.gd" type="Script" id=1]
-[ext_resource path="res://audio/sfx/ambience.wav" type="AudioStream" id=2]
-[ext_resource path="res://audio/sfx/footstep.wav" type="AudioStream" id=3]
-[ext_resource path="res://audio/sfx/goodSwing.wav" type="AudioStream" id=4]
-[ext_resource path="res://audio/sfx/playerHit.wav" type="AudioStream" id=5]
-[ext_resource path="res://audio/sfx/badSwing.wav" type="AudioStream" id=6]
-[ext_resource path="res://audio/sfx/hit.wav" type="AudioStream" id=7]
-[ext_resource path="res://audio/sfx/dollDieing.wav" type="AudioStream" id=8]
-[ext_resource path="res://audio/sfx/lever.wav" type="AudioStream" id=9]
-[ext_resource path="res://audio/sfx/pressurePlate.wav" type="AudioStream" id=10]
-[ext_resource path="res://audio/sfx/doorOpen.wav" type="AudioStream" id=11]
-[ext_resource path="res://audio/sfx/gate.wav" type="AudioStream" id=12]
-[ext_resource path="res://audio/sfx/buttonPress.wav" type="AudioStream" id=13]
-[ext_resource path="res://audio/sfx/orbSmash.wav" type="AudioStream" id=14]
+[ext_resource path="res://addons/audio_booth/source/music/MusicBooth.gd" type="Script" id=2]
+[ext_resource path="res://addons/audio_booth/graphics/icons/icon.png" type="Texture" id=3]
+[ext_resource path="res://addons/audio_booth/source/music/Song.gd" type="Script" id=4]
+[ext_resource path="res://addons/audio_booth/source/music/containers/TrackContainer.gd" type="Script" id=5]
+[ext_resource path="res://audio/music/gameLoop.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/music/happyFixed.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/sfx/ambience.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/sfx/footstep.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/sfx/goodSwing.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/sfx/playerHit.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/sfx/badSwing.wav" type="AudioStream" id=12]
+[ext_resource path="res://audio/sfx/hit.wav" type="AudioStream" id=13]
+[ext_resource path="res://audio/sfx/dollDieing.wav" type="AudioStream" id=14]
+[ext_resource path="res://audio/sfx/lever.wav" type="AudioStream" id=15]
+[ext_resource path="res://audio/sfx/pressurePlate.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/sfx/doorOpen.wav" type="AudioStream" id=17]
+[ext_resource path="res://audio/sfx/gate.wav" type="AudioStream" id=18]
+[ext_resource path="res://audio/sfx/buttonPress.wav" type="AudioStream" id=19]
+[ext_resource path="res://audio/sfx/orbSmash.wav" type="AudioStream" id=20]
 
 [node name="Audio" type="Node"]
 pause_mode = 2
@@ -21,30 +27,63 @@ script = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="MusicBooth" type="Node" parent="."]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+
+[node name="Level" type="Node" parent="MusicBooth"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+tempo = 91.0
+beats = 4
+
+[node name="TrackContainer" type="Node" parent="MusicBooth/Level"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+
+[node name="Core" type="AudioStreamPlayer" parent="MusicBooth/Level/TrackContainer"]
+stream = ExtResource( 6 )
+
+[node name="Menu" type="Node" parent="MusicBooth"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+tempo = 108.0
+beats = 4
+
+[node name="TrackContainer" type="Node" parent="MusicBooth/Menu"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+
+[node name="Core" type="AudioStreamPlayer" parent="MusicBooth/Menu/TrackContainer"]
+stream = ExtResource( 7 )
+
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 8 )
 volume_db = -16.0
-
-[node name="Music" type="Node" parent="."]
-
-[node name="Player" type="AudioStreamPlayer" parent="Music"]
-volume_db = -10.0
-
-[node name="Timer" type="Timer" parent="Music"]
 
 [node name="Boy" type="Node" parent="."]
 
 [node name="Footstep" type="AudioStreamPlayer" parent="Boy"]
-stream = ExtResource( 3 )
+stream = ExtResource( 9 )
 volume_db = -25.0
 
 [node name="Slash" type="AudioStreamPlayer" parent="Boy"]
-stream = ExtResource( 4 )
+stream = ExtResource( 10 )
 volume_db = -8.0
 pitch_scale = 0.7
 
 [node name="Hit" type="AudioStreamPlayer" parent="Boy"]
-stream = ExtResource( 5 )
+stream = ExtResource( 11 )
 volume_db = -6.0
 
 [node name="Girl" type="Node" parent="."]
@@ -52,41 +91,41 @@ volume_db = -6.0
 [node name="Doll" type="Node" parent="."]
 
 [node name="Slash" type="AudioStreamPlayer" parent="Doll"]
-stream = ExtResource( 6 )
+stream = ExtResource( 12 )
 volume_db = -8.0
 pitch_scale = 1.3
 
 [node name="Hit" type="AudioStreamPlayer" parent="Doll"]
-stream = ExtResource( 7 )
+stream = ExtResource( 13 )
 volume_db = -6.0
 pitch_scale = 1.2
 
 [node name="Die" type="AudioStreamPlayer" parent="Doll"]
-stream = ExtResource( 8 )
+stream = ExtResource( 14 )
 volume_db = -12.0
 pitch_scale = 1.4
 
 [node name="Lever" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource( 15 )
 volume_db = -14.0
 
 [node name="Plate" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 16 )
 volume_db = -8.0
 
 [node name="Door" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 17 )
 volume_db = -6.0
 
 [node name="Gate" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 18 )
 volume_db = -4.0
 
 [node name="Button" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 13 )
+stream = ExtResource( 19 )
 volume_db = -15.0
 
 [node name="OrbSmash" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
+stream = ExtResource( 20 )
 volume_db = -12.0
 pitch_scale = 1.2

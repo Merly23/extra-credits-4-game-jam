@@ -9,7 +9,7 @@ var loader: ResourceInteractiveLoader = null
 var current_stage := -1
 
 func _process(delta) -> void:
-	
+
 	if loader == null:
 		return
 

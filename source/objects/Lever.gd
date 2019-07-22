@@ -13,13 +13,13 @@ func _input(event: InputEvent) -> void:
 		if activated:
 			anim.play_backwards("activate")
 			activated = false
-			Audio.play_lever()
+			Audio.play_sfx("lever")
 			yield(get_tree().create_timer(0.3), "timeout")
 			emit_signal("deactivated")
 		else:
 			anim.play("activate")
 			activated = true
-			Audio.play_lever()
+			Audio.play_sfx("lever")
 			yield(get_tree().create_timer(0.3), "timeout")
 			emit_signal("activated")
 

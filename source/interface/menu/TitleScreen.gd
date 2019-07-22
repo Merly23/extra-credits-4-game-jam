@@ -7,7 +7,7 @@ onready var tween := $Tween as Tween
 onready var buttons := $CenterContainer/VBoxContainer.get_children()
 
 func _ready() -> void:
-	Audio.play_menu_music()
+	Audio.play_song("Menu", 0.5)
 
 	for button in buttons:
 		button.modulate = Color("00FFFFFF")
@@ -15,19 +15,19 @@ func _ready() -> void:
 	call_deferred("_animate")
 
 func _on_Game_pressed() -> void:
-	Audio.play_button()
+	Audio.play_sfx("button")
 	Scene.change(Scene.Game, true)
 
 func _on_Controls_pressed() -> void:
-	Audio.play_button()
+	Audio.play_sfx("button")
 	Scene.change(Scene.Controls)
 
 func _on_Credits_pressed() -> void:
-	Audio.play_button()
+	Audio.play_sfx("button")
 	Scene.change(Scene.Credits)
 
 func _on_Exit_pressed() -> void:
-	Audio.play_button()
+	Audio.play_sfx("button")
 	get_tree().quit()
 
 func _animate() -> void:

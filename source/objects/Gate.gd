@@ -16,13 +16,13 @@ func activate(play_sound: bool = true) -> void:
 	anim.play("open")
 	coll.disabled = true
 	if play_sound:
-		Audio.play_gate()
+		Audio.play_sfx("gate")
 
 func deactivate() -> void:
 	opened = false
 	anim.play_backwards("open")
 	coll.disabled = false
-	Audio.play_gate()
+	Audio.play_sfx("gate")
 
 func toggle():
 	if opened:

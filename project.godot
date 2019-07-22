@@ -91,6 +91,10 @@ window/size/test_height=800
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "audio_booth" )
+
 [importer_defaults]
 
 texture={

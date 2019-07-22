@@ -52,7 +52,7 @@ func slash():
 func harm(origin, damage: int) -> void:
 	.harm(origin, damage)
 	get_tree().call_group("Interface", "update_boy_health", health)
-	Audio.play_boy_hit()
+	Audio.play_sfx("boy_hit")
 	knockback(origin, 10)
 
 func heal(value: int) -> void:
@@ -76,10 +76,10 @@ func knockback(origin, force := 25):
 	tween.start()
 
 func play_slash():
-	Audio.play_boy_slash()
+	Audio.play_sfx("boy_slash")
 
 func play_step():
-	Audio.play_boy_foodstep()
+	Audio.play_sfx("boy_footstep")
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:

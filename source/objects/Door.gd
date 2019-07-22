@@ -18,14 +18,14 @@ func activate(play_sound: bool = true) -> void:
 	coll.disabled = true
 	ghost_block.disabled = true
 	if play_sound:
-		Audio.play_door()
+		Audio.play_sfx("door")
 
 func deactivate() -> void:
 	opened = false
 	anim.play_backwards("open")
 	coll.disabled = false
 	ghost_block.disabled = false
-	Audio.play_door()
+	Audio.play_sfx("door")
 
 func toggle():
 	if opened:
