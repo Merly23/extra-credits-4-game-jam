@@ -16,7 +16,8 @@ onready var sfx := {
 	"plate": $Plate,
 	"door": $Door,
 	"gate": $Lever,
-	"button": $Lever,
+	"button_hover": $Button/Hover,
+	"button_pressed": $Button/Pressed,
 	"orb_smash": $OrbSmash,
 }
 

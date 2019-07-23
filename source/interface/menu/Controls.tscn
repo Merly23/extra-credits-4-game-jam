@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://source/interface/menu/Controls.gd" type="Script" id=2]
+[ext_resource path="res://source/interface/menu/MenuButton.tscn" type="PackedScene" id=3]
 
 [node name="Controls" type="Panel"]
 anchor_right = 1.0
@@ -15,9 +16,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 96.0
-margin_top = 16.0
+margin_top = 14.0
 margin_right = 223.0
-margin_bottom = 183.0
+margin_bottom = 185.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 127.0
@@ -35,11 +36,10 @@ The Ghost can heal the Boy."
 align = 1
 valign = 1
 
-[node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Back" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 151.0
 margin_right = 127.0
-margin_bottom = 167.0
-focus_mode = 0
-enabled_focus_mode = 0
+margin_bottom = 171.0
 text = "Back"
+grab_focus = true
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

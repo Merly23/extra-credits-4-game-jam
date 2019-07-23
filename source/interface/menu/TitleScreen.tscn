@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://source/interface/menu/TitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://source/interface/menu/MenuButton.tscn" type="PackedScene" id=3]
 
 [node name="TitleScreen" type="Panel"]
 anchor_right = 1.0
@@ -16,47 +17,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 130.0
-margin_top = 54.0
-margin_right = 190.0
-margin_bottom = 146.0
+margin_left = 135.0
+margin_top = 48.0
+margin_right = 185.0
+margin_bottom = 152.0
 custom_constants/separation = 8
 
-[node name="Game" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_right = 60.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 60, 0 )
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Play"
+[node name="NewGame" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+text = "New Game"
+grab_focus = true
 
-[node name="Controls" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="LoadGame" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+visible = false
 margin_top = 25.0
-margin_right = 60.0
+margin_right = 45.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 60, 0 )
-focus_mode = 0
-enabled_focus_mode = 0
+text = "Load Game"
+
+[node name="Controls" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 28.0
+margin_bottom = 48.0
 text = "Controls"
 
-[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 50.0
-margin_right = 60.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 60, 0 )
-focus_mode = 0
-enabled_focus_mode = 0
+[node name="Credits" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 56.0
+margin_bottom = 76.0
 text = "Credits"
 
-[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 75.0
-margin_right = 60.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 60, 0 )
-focus_mode = 0
-enabled_focus_mode = 0
+[node name="Quit" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 84.0
+margin_bottom = 104.0
 text = "Quit"
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Game" to="." method="_on_Game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LoadGame" to="." method="_on_LoadGame_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

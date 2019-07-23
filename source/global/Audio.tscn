@@ -14,11 +14,11 @@
 [ext_resource path="res://audio/sfx/badSwing.wav" type="AudioStream" id=12]
 [ext_resource path="res://audio/sfx/hit.wav" type="AudioStream" id=13]
 [ext_resource path="res://audio/sfx/dollDieing.wav" type="AudioStream" id=14]
-[ext_resource path="res://audio/sfx/lever.wav" type="AudioStream" id=15]
-[ext_resource path="res://audio/sfx/pressurePlate.wav" type="AudioStream" id=16]
-[ext_resource path="res://audio/sfx/doorOpen.wav" type="AudioStream" id=17]
-[ext_resource path="res://audio/sfx/gate.wav" type="AudioStream" id=18]
-[ext_resource path="res://audio/sfx/buttonPress.wav" type="AudioStream" id=19]
+[ext_resource path="res://audio/sfx/buttonPress.wav" type="AudioStream" id=15]
+[ext_resource path="res://audio/sfx/lever.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/sfx/pressurePlate.wav" type="AudioStream" id=17]
+[ext_resource path="res://audio/sfx/doorOpen.wav" type="AudioStream" id=18]
+[ext_resource path="res://audio/sfx/gate.wav" type="AudioStream" id=19]
 [ext_resource path="res://audio/sfx/orbSmash.wav" type="AudioStream" id=20]
 
 [node name="Audio" type="Node"]
@@ -105,25 +105,32 @@ stream = ExtResource( 14 )
 volume_db = -12.0
 pitch_scale = 1.4
 
-[node name="Lever" type="AudioStreamPlayer" parent="."]
+[node name="Button" type="Node" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer" parent="Button"]
 stream = ExtResource( 15 )
+volume_db = -22.0
+pitch_scale = 2.0
+
+[node name="Pressed" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource( 15 )
+volume_db = -15.0
+
+[node name="Lever" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
 volume_db = -14.0
 
 [node name="Plate" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 16 )
+stream = ExtResource( 17 )
 volume_db = -8.0
 
 [node name="Door" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 17 )
+stream = ExtResource( 18 )
 volume_db = -6.0
 
 [node name="Gate" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 18 )
-volume_db = -4.0
-
-[node name="Button" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -15.0
+volume_db = -4.0
 
 [node name="OrbSmash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
