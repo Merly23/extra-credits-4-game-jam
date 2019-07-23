@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Character",
 "class": "Doll",
 "language": "GDScript",
-"path": "res://source/character/doll/Doll.gd"
+"path": "res://source/character/ai/doll/Doll.gd"
 }, {
 "base": "Node",
 "class": "FiniteStateMachine",
@@ -33,11 +33,6 @@ _global_script_classes=[ {
 "class": "GameCam",
 "language": "GDScript",
 "path": "res://source/camera/GameCam.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Girl",
-"language": "GDScript",
-"path": "res://source/character/girl/Girl.gd"
 }, {
 "base": "StaticBody2D",
 "class": "Orb",
@@ -60,7 +55,6 @@ _global_script_class_icons={
 "Doll": "",
 "FiniteStateMachine": "",
 "GameCam": "",
-"Girl": "",
 "Orb": "",
 "SceneLoader": "",
 "State": ""

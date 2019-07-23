@@ -1,79 +1,71 @@
 extends KinematicBody2D
 class_name Character
 
-enum FACING { DOWN, RIGHT, UP, LEFT }
+signal health_changed(new_heath)
+signal died()
 
 var health := 0
 
-var knocked_back := false
-var knockback_direction := Vector2()
-
-export(FACING) var facing := FACING.DOWN
+var motion := Vector2(0, 0)
 
 export var health_max := 20
 
-export var frame_size := Vector2(16, 16)
-
 onready var anim_player := $AnimationPlayer as AnimationPlayer
-onready var anim_tree := $AnimationTree as AnimationTree
-onready var anim = anim_tree.get("parameters/playback")
 onready var tween := $Tween as Tween
 
 onready var sprite := $Sprite as Sprite
 
-onready var knockback_timer := $KnockbackTimer as Timer
-
 onready var fsm = $FiniteStateMachine as FiniteStateMachine
 
 func _ready() -> void:
-	anim_tree.advance(0)
-	fsm.host = self
 	health = health_max
+	fsm.host = self
 
-func change_state(state_name: String) -> void:
-	fsm.change_state(state_name)
+func _physics_process(delta: float) -> void:
+	move_and_slide(motion)
 
-func get_direction(a: Vector2, b: Vector2) -> Vector2:
-	var dir = (b - a).normalized()
-	if dir.x < -0.5: dir.x = -1
-	elif dir.x > 0.5: dir.x = 1
-	else: dir.x = 0
-	if dir.y < -0.5: dir.y = -1
-	elif dir.y > 0.5: dir.y = 1
-	else: dir.y = 0
-	return dir
+func get_input_direction() -> Vector2:
 
-func _on_StateMachine_state_changed(state_name) -> void:
-	print(self, ": ", state_name)
+	var up = Input.is_action_pressed("ui_up")
+	var down = Input.is_action_pressed("ui_down")
+	var left = Input.is_action_pressed("ui_left")
+	var right = Input.is_action_pressed("ui_right")
+
+	return Vector2(int(right) - int(left), int(up) - int(down))
 
 func harm(origin, damage: int) -> void:
-	health -= damage
+	_set_health(health - damage)
+
 	tween.interpolate_property(sprite, "modulate", Color("FF0000"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
+
 	knockback(origin)
 
 func heal(value: int) -> void:
-	health += value
-	if health > health_max:
-		health = health_max
+	_set_health(health + value)
 
 	tween.interpolate_property(sprite, "modulate", Color("00FF00"), Color("FFFFFF"), 0.25, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
-func knockback(origin, force := 25):
-	knocked_back = true
-	knockback_timer.start()
+func knockback(origin: Vector2, force := 200):
+	var direction = origin.direction_to(global_position)
 
-func is_health_max():
+	tween.interpolate_property(self, "motion", direction * force, Vector2(0, 0), 0.25, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.start()
+
+func change_state(state_name: String) -> void:
+	fsm.change_state(state_name)
+
+func is_fully_healed():
 	return health == health_max
 
-func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
-	if health <= 0:
-		queue_free()
+func _set_health(new_health):
+	health = clamp(new_health, 0, health_max)
 
-func _on_KnockbackTimer_timeout() -> void:
-	knocked_back = false
+	emit_signal("health_changed")
 
-func _on_KnockbackChecker_body_entered(body: PhysicsBody2D) -> void:
-	if self != Global.Boy:
-		knockback(body, 10)
+	if health == 0:
+		emit_signal("died")
+
+func _on_FiniteStateMachine_state_changed(state_name) -> void:
+	print("%s: %s" % [name, state_name])

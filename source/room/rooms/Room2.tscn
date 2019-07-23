@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://source/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/objects/Orb.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://source/objects/Plate.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/objects/HDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://source/objects/VDoor.tscn" type="PackedScene" id=7]
-[ext_resource path="res://source/character/doll/Doll.tscn" type="PackedScene" id=8]
 
 [node name="Room2" instance=ExtResource( 1 )]
 
@@ -54,11 +53,5 @@ position = Vector2( 248, 564 )
 
 [node name="VDoor2" parent="Objects/Doors1" index="4" instance=ExtResource( 7 )]
 position = Vector2( 264, 676 )
-
-[node name="Doll" parent="Enemies" index="0" instance=ExtResource( 8 )]
-position = Vector2( 495, 585 )
-
-[node name="Doll2" parent="Enemies" index="1" instance=ExtResource( 8 )]
-position = Vector2( 426, 568 )
 [connection signal="destroyed" from="Objects/StartOrbs/Orb" to="Objects/StartOrbs/Runes" method="destroy"]
 [connection signal="destroyed" from="Objects/StartOrbs/Orb2" to="Objects/StartOrbs/Runes2" method="destroy"]

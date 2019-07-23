@@ -1,2 +1,2 @@
 extends Character
-class_name Boy
+class_name Doll

@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
 
 func change_state(new_state: String) -> void:
 
-	print("%s: %s" % [host.name, new_state])
 	if current_state:
 		current_state.exit(host)
 
