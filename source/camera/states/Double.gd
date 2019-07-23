@@ -12,7 +12,7 @@ func exit(host):
 
 func update(host, delta: float) -> void:
 	if not host.characters_in_reach():
-		host.state_machine.change_state("single")
+		host.change_state("Single")
 
 	if tween_time > 0:
 		host.tween.interpolate_property(host, "global_position", host.global_position, host.get_target_position(), tween_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)

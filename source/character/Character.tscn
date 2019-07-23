@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/character/Character.gd" type="Script" id=1]
 [ext_resource path="res://graphics/images/characters/character.png" type="Texture" id=2]
-[ext_resource path="res://source/character/StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://addons/finite_state_machine/source/FiniteStateMachine.gd" type="Script" id=3]
+[ext_resource path="res://addons/finite_state_machine/icons/fsm.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 4 )
@@ -31,8 +32,11 @@ shape = SubResource( 1 )
 position = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="FiniteStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
 
 [node name="KnockbackChecker" type="Area2D" parent="."]
 
@@ -42,5 +46,4 @@ shape = SubResource( 2 )
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
-[connection signal="state_changed" from="StateMachine" to="." method="_on_StateMachine_state_changed"]
 [connection signal="body_entered" from="KnockbackChecker" to="." method="_on_KnockbackChecker_body_entered"]

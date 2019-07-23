@@ -23,12 +23,15 @@ onready var sprite := $Sprite as Sprite
 
 onready var knockback_timer := $KnockbackTimer as Timer
 
-onready var state_machine = $StateMachine as StateMachine
+onready var fsm = $FiniteStateMachine as FiniteStateMachine
 
 func _ready() -> void:
 	anim_tree.advance(0)
-	state_machine.host = self
+	fsm.host = self
 	health = health_max
+
+func change_state(state_name: String) -> void:
+	fsm.change_state(state_name)
 
 func get_direction(a: Vector2, b: Vector2) -> Vector2:
 	var dir = (b - a).normalized()

@@ -9,4 +9,4 @@ func enter(host):
 	host.sprite.frame = 0
 
 func attack_finished() -> void:
-	host.state_machine.change_state("idle")
+	host.change_state("Idle")

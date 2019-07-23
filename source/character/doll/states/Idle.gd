@@ -15,8 +15,7 @@ func enter(host):
 	host.anim.travel("idle")
 	host.sprite.frame = 0
 	randomize()
-	timer.wait_time = rand_range(0.5, 1.2)
-	timer.start()
+	timer.start(rand_range(0.5, 1.2))
 
 func exit(host):
 	timer.stop()
@@ -26,8 +25,8 @@ func input(host, event: InputEvent):
 
 func _on_Timer_timeout() -> void:
 	if host.is_target_in_attack_reach():
-		host.state_machine.change_state("attack")
+		host.change_state("Attack")
 	elif host.is_target_in_sight():
-		host.state_machine.change_state("walk")
+		host.change_state("Walk")
 	else:
 		timer.start()

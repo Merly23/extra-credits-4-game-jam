@@ -20,12 +20,9 @@ onready var stick_area := $StickArea
 
 func _ready() -> void:
 	anim_tree.active = true
-	state_machine.register_state("idle", "Idle")
-	state_machine.register_state("walk", "Walk")
-	state_machine.register_state("attack", "Attack")
-	state_machine.register_state("dead", "Dead")
-	state_machine.change_state("idle")
-	_set_target(target)
+	change_state("Idle")
+	# _set_target(target)
+	_target = Global.Boy
 
 func get_target_position():
 	if _target:
@@ -72,7 +69,7 @@ func has_health():
 func blocked():
 	tween.stop_all()
 	tween.remove_all()
-	state_machine.change_state("idle")
+	change_state("Idle")
 
 func knockback(origin, force := 25):
 	print("knockback")
@@ -110,4 +107,4 @@ func _set_target(value):
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
-		state_machine.change_state("dead")
+		change_state("Dead")

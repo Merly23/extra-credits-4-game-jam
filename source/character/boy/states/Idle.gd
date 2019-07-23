@@ -21,8 +21,8 @@ func update(host, delta: float):
 	right = Input.is_action_pressed("ui_right")
 
 	if up or down or left or right:
-		host.state_machine.change_state("walk")
+		host.change_state("Walk")
 
 func input(host, event: InputEvent):
 	if event.is_action_pressed("mouse_left_button"):
-		host.state_machine.change_state("attack")
+		host.change_state("Attack")

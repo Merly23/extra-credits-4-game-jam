@@ -5,13 +5,11 @@ var targets := [] setget _set_targets
 
 onready var tween := $Tween as Tween
 
-onready var state_machine := $StateMachine as StateMachine
+onready var fsm := $FiniteStateMachine as FiniteStateMachine
 
 func _ready() -> void:
-	state_machine.host = self
-	state_machine.register_state("single", "Single")
-	state_machine.register_state("double", "Double")
-	state_machine.change_state("single")
+	fsm.host = self
+	fsm.change_state("Single")
 
 func get_target_position() -> Vector2:
 	var new_position := Vector2()
@@ -20,6 +18,9 @@ func get_target_position() -> Vector2:
 		new_position += target.global_position
 
 	return new_position / targets.size()
+
+func change_state(state_name: String) -> void:
+	fsm.change_state(state_name)
 
 func characters_in_reach() -> bool:
 	if Global.Boy and Global.Girl:

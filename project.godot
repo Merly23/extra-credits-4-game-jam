@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/character/doll/Doll.gd"
 }, {
+"base": "Node",
+"class": "FiniteStateMachine",
+"language": "GDScript",
+"path": "res://addons/finite_state_machine/source/FiniteStateMachine.gd"
+}, {
 "base": "Camera2D",
 "class": "GameCam",
 "language": "GDScript",
@@ -47,23 +52,18 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://source/character/State.gd"
-}, {
-"base": "Node",
-"class": "StateMachine",
-"language": "GDScript",
-"path": "res://source/character/StateMachine.gd"
+"path": "res://addons/finite_state_machine/source/State.gd"
 } ]
 _global_script_class_icons={
 "Boy": "",
 "Character": "",
 "Doll": "",
+"FiniteStateMachine": "",
 "GameCam": "",
 "Girl": "",
 "Orb": "",
 "SceneLoader": "",
-"State": "",
-"StateMachine": ""
+"State": ""
 }
 
 [application]
@@ -93,7 +93,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "audio_booth" )
+enabled=PoolStringArray( "audio_booth", "finite_state_machine" )
 
 [importer_defaults]
 

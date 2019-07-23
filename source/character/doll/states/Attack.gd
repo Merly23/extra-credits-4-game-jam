@@ -18,4 +18,4 @@ func get_facing(direction: Vector2, prev_facing):
 	return prev_facing
 
 func attack_finished():
-		host.state_machine.change_state("idle")
+		host.change_state("Idle")

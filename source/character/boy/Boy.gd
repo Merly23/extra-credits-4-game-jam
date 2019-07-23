@@ -15,11 +15,7 @@ func _ready() -> void:
 	Global.Boy = self
 	anim_tree.active = true
 
-	state_machine.register_state("idle", "Idle")
-	state_machine.register_state("walk", "Walk")
-	state_machine.register_state("attack", "Attack")
-	state_machine.register_state("dead", "Dead")
-	state_machine.change_state("idle")
+	change_state("Idle")
 
 	get_tree().call_group("Doll", "set_target_node", self)
 	get_tree().call_group("Interface", "update_boy_max_health", health_max)
@@ -83,4 +79,4 @@ func play_step():
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if health <= 0:
-		state_machine.change_state("dead")
+		change_state("Dead")

@@ -16,7 +16,7 @@ func enter(host):
 
 func input(host, event: InputEvent):
 	if event.is_action_pressed("mouse_left_button"):
-		host.state_machine.change_state("attack")
+		host.change_state("Attack")
 
 func update(host, delta: float) -> void:
 	_movement(host, delta)
@@ -32,7 +32,7 @@ func _movement(host, delta: float) -> void:
 	direction.y = -int(up) + int(down)
 
 	if direction == Vector2.ZERO:
-		host.state_machine.change_state("idle")
+		host.change_state("Idle")
 	else:
 		host.move_and_slide(direction.normalized() * speed)
 

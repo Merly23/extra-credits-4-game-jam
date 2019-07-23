@@ -31,7 +31,7 @@ func exit(host):
 func update(host, delta: float):
 	if host.is_target_in_attack_reach():
 		tween.stop_all()
-		host.state_machine.change_state("attack")
+		host.change_state("Attack")
 
 func _animation(host):
 	match direction:
@@ -64,4 +64,4 @@ func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if path and steps < steps_max:
 		_move()
 	else:
-		host.state_machine.change_state("idle")
+		host.change_state("Idle")
