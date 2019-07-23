@@ -163,7 +163,7 @@ end_node = "die"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[node name="Doll" index="0" groups=[
+[node name="Doll" groups=[
 "Doll",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )

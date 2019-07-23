@@ -135,6 +135,7 @@ func _set_volume_db(value) -> void:
 		track_player.volume_db = value
 
 func _fade_in(player: AudioStreamPlayer, fade_time: float) -> void:
+	player.volume_db = -60
 	tween.interpolate_property(player, "volume_db", -60.0, volume_db, fade_time, Tween.TRANS_QUINT, Tween.EASE_OUT)
 	tween.start()
 
