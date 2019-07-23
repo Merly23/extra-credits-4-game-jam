@@ -1,8 +1,9 @@
 extends KinematicBody2D
 class_name Character
 
+enum FACING { DOWN, RIGHT, UP, LEFT }
+
 signal health_changed(new_heath)
-signal direction_changed(new_direction)
 signal died()
 
 var health := 0
@@ -10,7 +11,7 @@ var health := 0
 var motion := Vector2(0, 0)
 
 var current_animation := ""
-var current_direction := Vector2(0, 1)
+var facing : int = FACING.DOWN
 
 export var health_max := 20
 
@@ -45,7 +46,7 @@ func get_input_direction() -> Vector2:
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
 
-	return Vector2(int(right) - int(left), int(down) - int(up)).normalized()
+	return Vector2(int(right) - int(left), int(down) - int(up))
 
 func harm(origin, damage: int) -> void:
 	_set_health(health - damage)
@@ -79,19 +80,19 @@ func is_dead() -> bool:
 func update_direction() -> void:
 	var new_direction = get_input_direction()
 
-	if not new_direction or current_direction == new_direction or is_dead():
-		return
-
-	current_direction = new_direction
-	emit_signal("direction_changed", current_direction)
+	match new_direction:
+		Vector2.UP: facing = FACING.UP
+		Vector2.DOWN: facing = FACING.DOWN
+		Vector2.LEFT: facing = FACING.LEFT
+		Vector2.RIGHT: facing = FACING.RIGHT
 
 func update_animation() -> void:
 
-	match current_direction:
-		Vector2.UP: anim_player.play(current_animation + "_up")
-		Vector2.DOWN: anim_player.play(current_animation + "_down")
-		Vector2.LEFT: anim_player.play(current_animation + "_left")
-		Vector2.RIGHT: anim_player.play(current_animation + "_right")
+	match facing:
+		FACING.UP: anim_player.play(current_animation + "_up")
+		FACING.DOWN: anim_player.play(current_animation + "_down")
+		FACING.LEFT: anim_player.play(current_animation + "_left")
+		FACING.RIGHT: anim_player.play(current_animation + "_right")
 
 func _set_health(new_health):
 	health = clamp(new_health, 0, health_max)
