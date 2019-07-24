@@ -6,10 +6,9 @@ func enter(host: Boy) -> void:
 	host.play_anim("walk")
 
 func update(host: Boy, delta: float) -> void:
-	host.update_direction()
 	host.update_animation()
 
-	var input_direction = host.get_input_direction()
+	var input_direction = host.get_input_direction().normalized()
 
 	host.motion = input_direction * speed
 
