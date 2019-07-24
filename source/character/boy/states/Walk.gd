@@ -5,6 +5,11 @@ export var speed := 100
 func enter(host: Boy) -> void:
 	host.play_anim("walk")
 
+func input(host: Boy, event: InputEvent) -> void:
+
+	if event.is_action_pressed("mouse_left_button"):
+		host.change_state("attack")
+
 func update(host: Boy, delta: float) -> void:
 	host.update_animation()
 
