@@ -11,6 +11,7 @@ var motion := Vector2(0, 0)
 var facing := Vector2(0, 1)
 var current_animation := ""
 
+export var team_number := 0
 export var health_max := 20
 
 onready var anim_player := $AnimationPlayer as AnimationPlayer
