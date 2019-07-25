@@ -14,7 +14,7 @@ func exit(host):
 
 func update(host, delta: float) -> void:
 	if host.characters_in_reach():
-		host.change_state("Double")
+		host.change_state("double")
 
 	if tween_time > 0:
 		host.tween.interpolate_property(host, "global_position", host.global_position, host.get_target_position(), tween_time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)

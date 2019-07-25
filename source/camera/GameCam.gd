@@ -9,7 +9,7 @@ onready var fsm := $FiniteStateMachine as FiniteStateMachine
 
 func _ready() -> void:
 	fsm.host = self
-	fsm.change_state("Single")
+	fsm.change_state("single")
 
 func get_target_position() -> Vector2:
 	var new_position := Vector2()

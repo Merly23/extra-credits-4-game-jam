@@ -7,7 +7,7 @@
 [ext_resource path="res://source/objects/Plate.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/objects/HDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://source/objects/VDoor.tscn" type="PackedScene" id=7]
-[ext_resource path="res://source/character/doll/Doll.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/character/ai/doll/Doll.tscn" type="PackedScene" id=8]
 
 [node name="Room2" instance=ExtResource( 1 )]
 
@@ -56,9 +56,9 @@ position = Vector2( 248, 564 )
 position = Vector2( 264, 676 )
 
 [node name="Doll" parent="Enemies" index="0" instance=ExtResource( 8 )]
-position = Vector2( 495, 585 )
+position = Vector2( 440.583, 591.08 )
 
 [node name="Doll2" parent="Enemies" index="1" instance=ExtResource( 8 )]
-position = Vector2( 426, 568 )
+position = Vector2( 501.052, 605.013 )
 [connection signal="destroyed" from="Objects/StartOrbs/Orb" to="Objects/StartOrbs/Runes" method="destroy"]
 [connection signal="destroyed" from="Objects/StartOrbs/Orb2" to="Objects/StartOrbs/Runes2" method="destroy"]
