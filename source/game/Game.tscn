@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://source/room/rooms/Room1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/room/rooms/Room2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/character/boy/Boy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/backgrounds/InfiniteForest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://source/interface/Interface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://source/camera/GameCam.tscn" type="PackedScene" id=7]
-[ext_resource path="res://source/interface/hud/Marker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/room/rooms/Room3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/backgrounds/InfiniteForest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/interface/Interface.tscn" type="PackedScene" id=7]
+[ext_resource path="res://source/camera/GameCam.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/interface/hud/Marker.tscn" type="PackedScene" id=9]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,11 +25,14 @@ position = Vector2( 48, -768 )
 [node name="Boy" parent="Navigation2D/Level" instance=ExtResource( 4 )]
 position = Vector2( 96, 576 )
 
-[node name="InfiniteForest" parent="." instance=ExtResource( 5 )]
+[node name="Room3" parent="Navigation2D/Level" instance=ExtResource( 5 )]
+position = Vector2( 33, -1104 )
 
-[node name="Interface" parent="." instance=ExtResource( 6 )]
+[node name="InfiniteForest" parent="." instance=ExtResource( 6 )]
 
-[node name="GameCam" parent="." instance=ExtResource( 7 )]
+[node name="Interface" parent="." instance=ExtResource( 7 )]
+
+[node name="GameCam" parent="." instance=ExtResource( 8 )]
 position = Vector2( 96, 576 )
 
-[node name="Marker" parent="." instance=ExtResource( 8 )]
+[node name="Marker" parent="." instance=ExtResource( 9 )]
