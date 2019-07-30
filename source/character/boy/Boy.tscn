@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/character/boy/Boy.gd" type="Script" id=2]
@@ -261,6 +261,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 24, 25, 26, 27, 28, 29 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+}, {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+} ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "walk_left"
@@ -277,6 +294,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 42, 43, 44, 45, 46, 47 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+}, {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+} ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -295,6 +329,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 30, 31, 32, 33, 34, 35 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+}, {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+} ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "walk_up"
@@ -312,6 +363,26 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 36, 37, 38, 39, 40, 41 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+}, {
+"args": [ "Footstep" ],
+"method": "play_sfx"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 4, 2 )
 
 [node name="Boy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -335,7 +406,11 @@ anims/walk_up = SubResource( 13 )
 texture = ExtResource( 3 )
 vframes = 13
 hframes = 6
-frame = 50
+frame = 27
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -6 )
+shape = SubResource( 14 )
 
 [node name="Idle" type="Node" parent="FiniteStateMachine" index="0"]
 script = ExtResource( 4 )
