@@ -24,9 +24,13 @@ onready var sfx := {
 onready var tween := $Tween as Tween
 
 onready var music_booth := $MusicBooth
+onready var sound_booth := $SoundBooth
 
 func _ready() -> void:
 	_set_volume(1.0)
+
+func play_booth_sfx(sfx_name: String) -> void:
+	sound_booth.play_sfx(sfx_name)
 
 func play_sfx(sfx_name: String) -> void:
 
@@ -37,11 +41,6 @@ func play_sfx(sfx_name: String) -> void:
 
 func play_ambience():
 	$Ambience.play()
-
-func play_boy_foodstep():
-	randomize()
-	$Boy/Footstep.pitch_scale = rand_range(0.9, 1.1)
-	$Boy/Footstep.play()
 
 func play_song(song_name: String, fade_time := 0.0) -> void:
 	music_booth.play_song(song_name, fade_time)

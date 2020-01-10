@@ -12,7 +12,7 @@ var host = null
 func _ready() -> void:
 
 	for state in get_children():
-		states[state.name] = state
+		states[state.name.to_lower()] = state
 
 func _unhandled_input(event: InputEvent) -> void:
 	if current_state:
@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
 
 func change_state(new_state: String) -> void:
 
-	print("%s: %s" % [host.name, new_state])
 	if current_state:
 		current_state.exit(host)
 

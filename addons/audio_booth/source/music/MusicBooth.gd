@@ -1,4 +1,5 @@
 extends Node
+class_name MusicBooth
 
 enum PLAYMODES { PLAY, LOOP, SHUFFLE }
 
