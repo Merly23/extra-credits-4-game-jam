@@ -10,9 +10,6 @@ func hit() -> void:
 
 func attack_finished() -> void:
 	change_state("idle")
-<<<<<<< HEAD
-=======
 
 func play_sfx(sfx_name: String) -> void:
 	Audio.play_booth_sfx(sfx_name)
->>>>>>> master
