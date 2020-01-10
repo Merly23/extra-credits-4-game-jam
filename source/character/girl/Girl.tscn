@@ -1,11 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/character/girl/Girl.gd" type="Script" id=2]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Character
-class_name Girl
-"
-
-[node name="Girl" index="0" instance=ExtResource( 1 )]
-script = SubResource( 1 )
+[node name="Girl" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
