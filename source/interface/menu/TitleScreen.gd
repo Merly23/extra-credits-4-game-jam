@@ -7,7 +7,7 @@ onready var tween := $Tween as Tween
 onready var buttons := $CenterContainer/VBoxContainer.get_children()
 
 func _ready() -> void:
-	Audio.play_song("Menu", 0.5)
+	# Audio.play_song("Menu", 0.5)
 
 	for button in buttons:
 		button.modulate = Color("00FFFFFF")
