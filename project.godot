@@ -9,10 +9,30 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Attribute",
+"language": "GDScript",
+"path": "res://source/character/Attribute.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://source/character/Character.gd"
+}, {
 "base": "Node",
 "class": "FiniteStateMachine",
 "language": "GDScript",
 "path": "res://addons/finite_state_machine/source/FiniteStateMachine.gd"
+}, {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://source/game/Game.gd"
+}, {
+"base": "CanvasLayer",
+"class": "HUD",
+"language": "GDScript",
+"path": "res://source/game/ui/HUD.gd"
 }, {
 "base": "Node",
 "class": "MusicBooth",
@@ -58,9 +78,18 @@ _global_script_classes=[ {
 "class": "TrackContainer",
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
+}, {
+"base": "CanvasLayer",
+"class": "UI",
+"language": "GDScript",
+"path": "res://source/game/ui/UI.gd"
 } ]
 _global_script_class_icons={
+"Attribute": "",
+"Character": "",
 "FiniteStateMachine": "",
+"Game": "",
+"HUD": "",
 "MusicBooth": "",
 "SceneLoader": "",
 "Song": "",
@@ -69,13 +98,14 @@ _global_script_class_icons={
 "State": "",
 "StingerContainer": "",
 "TitleScreen": "",
-"TrackContainer": ""
+"TrackContainer": "",
+"UI": ""
 }
 
 [application]
 
 config/name="The Boy and the Ghost"
-run/main_scene="res://source/menu/TitleScreen.tscn"
+run/main_scene="res://source/game/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]

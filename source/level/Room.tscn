@@ -1,3 +1,21 @@
 [gd_scene format=2]
 
 [node name="Room" type="YSort"]
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Navigation" type="TileMap" parent="Map"]
+format = 1
+
+[node name="Floor" type="TileMap" parent="Map"]
+format = 1
+
+[node name="Embellishment" type="TileMap" parent="Map"]
+format = 1
+
+[node name="Walls" type="TileMap" parent="."]
+format = 1
+
+[node name="Objects" type="YSort" parent="."]
+
+[node name="Enemies" type="YSort" parent="."]

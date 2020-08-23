@@ -2,4 +2,6 @@
 
 [node name="Level" type="YSort"]
 
-[node name="Rooms" type="YSort" parent="."]
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="Rooms" type="YSort" parent="Navigation2D"]
