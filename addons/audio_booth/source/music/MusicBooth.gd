@@ -111,7 +111,6 @@ func is_song_playing(song_name: String) -> bool:
 	return current_song.name == song_name
 
 func _get_song(song_name: String) -> Node:
-	assert(songs.has(song_name))
 	return songs[song_name]
 
 func _iterate_container(container: Array, type: String, action: String) -> void:

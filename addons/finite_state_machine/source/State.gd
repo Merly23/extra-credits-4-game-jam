@@ -1,14 +1,15 @@
 extends Node
 class_name State
 
-func enter(host) -> void:
+func enter(host: Node) -> void:
 	pass
 
-func input(host, event: InputEvent) -> void:
+func input(host: Node, event: InputEvent) -> void:
 	pass
 
-func update(host, delta: float) -> void:
+func update(host: Node, delta: float) -> void:
 	pass
 
-func exit(host) -> void:
+func exit(host: Node) -> void:
 	pass
+

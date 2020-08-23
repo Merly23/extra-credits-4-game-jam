@@ -9,50 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Character",
-"class": "Boy",
-"language": "GDScript",
-"path": "res://source/character/boy/Boy.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Character",
-"language": "GDScript",
-"path": "res://source/character/Character.gd"
-}, {
-"base": "Character",
-"class": "Doll",
-"language": "GDScript",
-"path": "res://source/character/ai/doll/Doll.gd"
-}, {
 "base": "Node",
 "class": "FiniteStateMachine",
 "language": "GDScript",
 "path": "res://addons/finite_state_machine/source/FiniteStateMachine.gd"
-}, {
-"base": "Camera2D",
-"class": "GameCam",
-"language": "GDScript",
-"path": "res://source/camera/GameCam.gd"
-}, {
-"base": "Character",
-"class": "Girl",
-"language": "GDScript",
-"path": "res://source/character/girl/Girl.gd"
 }, {
 "base": "Node",
 "class": "MusicBooth",
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/MusicBooth.gd"
 }, {
-"base": "StaticBody2D",
-"class": "Orb",
-"language": "GDScript",
-"path": "res://source/objects/Orb.gd"
-}, {
 "base": "Node",
 "class": "SceneLoader",
 "language": "GDScript",
-"path": "res://source/tools/SceneLoader.gd"
+"path": "res://addons/scene_manager/source/SceneLoader.gd"
 }, {
 "base": "Node",
 "class": "Song",
@@ -79,40 +49,38 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/containers/StingerContainer.gd"
 }, {
+"base": "Control",
+"class": "TitleScreen",
+"language": "GDScript",
+"path": "res://source/menu/TitleScreen.gd"
+}, {
 "base": "Node",
 "class": "TrackContainer",
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
 } ]
 _global_script_class_icons={
-"Boy": "",
-"Character": "",
-"Doll": "",
 "FiniteStateMachine": "",
-"GameCam": "",
-"Girl": "",
 "MusicBooth": "",
-"Orb": "",
 "SceneLoader": "",
 "Song": "",
 "Sound": "",
 "SoundBooth": "",
 "State": "",
 "StingerContainer": "",
+"TitleScreen": "",
 "TrackContainer": ""
 }
 
 [application]
 
 config/name="The Boy and the Ghost"
-run/main_scene="res://source/interface/menu/TitleScreen.tscn"
+run/main_scene="res://source/menu/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Scene="*res://source/global/Scene.tscn"
-Global="*res://source/global/Global.gd"
-Audio="*res://source/global/Audio.tscn"
+Scene="*res://addons/scene_manager/source/Scene.tscn"
 
 [debug]
 
@@ -129,7 +97,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "audio_booth", "finite_state_machine" )
+enabled=PoolStringArray( "audio_booth", "finite_state_machine", "scene_manager" )
 
 [importer_defaults]
 

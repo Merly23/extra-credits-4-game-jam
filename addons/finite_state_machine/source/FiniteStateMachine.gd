@@ -11,8 +11,8 @@ var host = null
 
 func _ready() -> void:
 
-	for state in get_children():
-		states[state.name.to_lower()] = state
+	for node in get_children():
+		states[node.name] = node
 
 func _unhandled_input(event: InputEvent) -> void:
 	if current_state:
@@ -21,6 +21,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.update(host, delta)
+
+func register_state(id: String, node_path: String):
+	states[id] = get_node(node_path)
 
 func change_state(new_state: String) -> void:
 
